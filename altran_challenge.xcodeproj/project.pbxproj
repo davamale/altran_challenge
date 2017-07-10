@@ -7,12 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5713A6431F12A4C90096F0FE /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713A6421F12A4C90096F0FE /* Generator.swift */; };
+		5713A6441F12A4C90096F0FE /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713A6421F12A4C90096F0FE /* Generator.swift */; };
+		5713A6461F12A73C0096F0FE /* GeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713A6451F12A73C0096F0FE /* GeneratorTests.swift */; };
+		5713A6481F12AB240096F0FE /* Gnome+Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713A6471F12AB240096F0FE /* Gnome+Methods.swift */; };
+		5713A6491F12AB240096F0FE /* Gnome+Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713A6471F12AB240096F0FE /* Gnome+Methods.swift */; };
+		5713A64B1F12AF060096F0FE /* GnomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713A64A1F12AF060096F0FE /* GnomeTests.swift */; };
+		5713A64D1F12C9A30096F0FE /* GnomeListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713A64C1F12C9A30096F0FE /* GnomeListViewModelTests.swift */; };
+		5713A6501F12CB290096F0FE /* NSManagedObjectContext+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713A64F1F12CB290096F0FE /* NSManagedObjectContext+Default.swift */; };
+		5713A6511F12CB290096F0FE /* NSManagedObjectContext+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713A64F1F12CB290096F0FE /* NSManagedObjectContext+Default.swift */; };
+		573598FE1F1004B900821FFA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573598FD1F1004B900821FFA /* CoreData.framework */; };
+		573599021F1004F400821FFA /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 573599001F1004F400821FFA /* Model.xcdatamodeld */; };
+		573599031F1004F400821FFA /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 573599001F1004F400821FFA /* Model.xcdatamodeld */; };
+		573599081F1005D100821FFA /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573599061F1005D100821FFA /* CoreDataStack.swift */; };
+		573599091F1005D100821FFA /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573599061F1005D100821FFA /* CoreDataStack.swift */; };
+		5735990A1F1005D100821FFA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573599071F1005D100821FFA /* NetworkManager.swift */; };
+		5735990B1F1005D100821FFA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573599071F1005D100821FFA /* NetworkManager.swift */; };
+		5735990D1F10073B00821FFA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5735990C1F10073B00821FFA /* Constants.swift */; };
+		5735990E1F10073B00821FFA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5735990C1F10073B00821FFA /* Constants.swift */; };
+		573599101F1007B700821FFA /* GnomeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5735990F1F1007B700821FFA /* GnomeListViewModel.swift */; };
+		573599111F1007B700821FFA /* GnomeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5735990F1F1007B700821FFA /* GnomeListViewModel.swift */; };
+		573599141F10086E00821FFA /* ViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573599121F10086E00821FFA /* ViewControllerProtocol.swift */; };
+		573599151F10086E00821FFA /* ViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573599121F10086E00821FFA /* ViewControllerProtocol.swift */; };
+		573599161F10086E00821FFA /* CoreDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573599131F10086E00821FFA /* CoreDataProtocol.swift */; };
+		573599171F10086E00821FFA /* CoreDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573599131F10086E00821FFA /* CoreDataProtocol.swift */; };
+		573599191F1008B900821FFA /* UIColor+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573599181F1008B900821FFA /* UIColor+Default.swift */; };
+		5735991A1F1008B900821FFA /* UIColor+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573599181F1008B900821FFA /* UIColor+Default.swift */; };
 		57DA986A1F100154004FCACD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98691F100154004FCACD /* AppDelegate.swift */; };
-		57DA986C1F100154004FCACD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA986B1F100154004FCACD /* ViewController.swift */; };
+		57DA986C1F100154004FCACD /* GnomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA986B1F100154004FCACD /* GnomeListView.swift */; };
 		57DA986F1F100154004FCACD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57DA986D1F100154004FCACD /* Main.storyboard */; };
 		57DA98711F100154004FCACD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57DA98701F100154004FCACD /* Assets.xcassets */; };
 		57DA98741F100154004FCACD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57DA98721F100154004FCACD /* LaunchScreen.storyboard */; };
-		57DA987F1F100154004FCACD /* altran_challengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA987E1F100154004FCACD /* altran_challengeTests.swift */; };
+		57E050121F12F96C002008AC /* ObjectHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E050111F12F96C002008AC /* ObjectHelper.swift */; };
+		57E050151F13283E002008AC /* Professions+Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E050141F13283E002008AC /* Professions+Methods.swift */; };
+		CE79D53B5A625DA7ABC0D023 /* Pods_altran_challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 688EAEAEFF4C76E46F171DE3 /* Pods_altran_challenge.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,16 +54,35 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5713A6421F12A4C90096F0FE /* Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
+		5713A6451F12A73C0096F0FE /* GeneratorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratorTests.swift; sourceTree = "<group>"; };
+		5713A6471F12AB240096F0FE /* Gnome+Methods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Gnome+Methods.swift"; sourceTree = "<group>"; };
+		5713A64A1F12AF060096F0FE /* GnomeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GnomeTests.swift; sourceTree = "<group>"; };
+		5713A64C1F12C9A30096F0FE /* GnomeListViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GnomeListViewModelTests.swift; sourceTree = "<group>"; };
+		5713A64F1F12CB290096F0FE /* NSManagedObjectContext+Default.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Default.swift"; sourceTree = "<group>"; };
+		573598FD1F1004B900821FFA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		573599011F1004F400821FFA /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		573599061F1005D100821FFA /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		573599071F1005D100821FFA /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		5735990C1F10073B00821FFA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5735990F1F1007B700821FFA /* GnomeListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GnomeListViewModel.swift; sourceTree = "<group>"; };
+		573599121F10086E00821FFA /* ViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerProtocol.swift; sourceTree = "<group>"; };
+		573599131F10086E00821FFA /* CoreDataProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataProtocol.swift; sourceTree = "<group>"; };
+		573599181F1008B900821FFA /* UIColor+Default.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Default.swift"; sourceTree = "<group>"; };
 		57DA98661F100154004FCACD /* altran_challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = altran_challenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57DA98691F100154004FCACD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		57DA986B1F100154004FCACD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		57DA986B1F100154004FCACD /* GnomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GnomeListView.swift; sourceTree = "<group>"; };
 		57DA986E1F100154004FCACD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		57DA98701F100154004FCACD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57DA98731F100154004FCACD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		57DA98751F100154004FCACD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57DA987A1F100154004FCACD /* altran_challengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = altran_challengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		57DA987E1F100154004FCACD /* altran_challengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = altran_challengeTests.swift; sourceTree = "<group>"; };
 		57DA98801F100154004FCACD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		57E050111F12F96C002008AC /* ObjectHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectHelper.swift; sourceTree = "<group>"; };
+		57E050141F13283E002008AC /* Professions+Methods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Professions+Methods.swift"; sourceTree = "<group>"; };
+		688EAEAEFF4C76E46F171DE3 /* Pods_altran_challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_altran_challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEB8891DCCE4ADF0EB817A98 /* Pods-altran_challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-altran_challenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-altran_challenge/Pods-altran_challenge.release.xcconfig"; sourceTree = "<group>"; };
+		F4E1E826A027B55B33330A61 /* Pods-altran_challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-altran_challenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-altran_challenge/Pods-altran_challenge.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +90,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				573598FE1F1004B900821FFA /* CoreData.framework in Frameworks */,
+				CE79D53B5A625DA7ABC0D023 /* Pods_altran_challenge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,12 +105,100 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5713A6411F12A4990096F0FE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5713A6421F12A4C90096F0FE /* Generator.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		5713A64E1F12CA0E0096F0FE /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Mocks;
+			sourceTree = "<group>";
+		};
+		573598F41F1003FE00821FFA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5735990F1F1007B700821FFA /* GnomeListViewModel.swift */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		573598F51F10040400821FFA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				573599001F1004F400821FFA /* Model.xcdatamodeld */,
+				5713A6471F12AB240096F0FE /* Gnome+Methods.swift */,
+				57E050141F13283E002008AC /* Professions+Methods.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		573598F61F10040F00821FFA /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				57DA986B1F100154004FCACD /* GnomeListView.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		573598F71F10041700821FFA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				573599181F1008B900821FFA /* UIColor+Default.swift */,
+				5713A64F1F12CB290096F0FE /* NSManagedObjectContext+Default.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		573598F81F10041D00821FFA /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				573599121F10086E00821FFA /* ViewControllerProtocol.swift */,
+				573599131F10086E00821FFA /* CoreDataProtocol.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		573598F91F10042500821FFA /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				57DA98691F100154004FCACD /* AppDelegate.swift */,
+				573599061F1005D100821FFA /* CoreDataStack.swift */,
+				573599071F1005D100821FFA /* NetworkManager.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		573599041F10055B00821FFA /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				5735990C1F10073B00821FFA /* Constants.swift */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		573599051F10057000821FFA /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				57DA986D1F100154004FCACD /* Main.storyboard */,
+				57DA98721F100154004FCACD /* LaunchScreen.storyboard */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		57DA985D1F100154004FCACD = {
 			isa = PBXGroup;
 			children = (
 				57DA98681F100154004FCACD /* altran_challenge */,
 				57DA987D1F100154004FCACD /* altran_challengeTests */,
 				57DA98671F100154004FCACD /* Products */,
+				9C37714CDA1F85BFEE5FDA0E /* Pods */,
+				B3BE50173E23E3E0280A9E3E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,12 +214,17 @@
 		57DA98681F100154004FCACD /* altran_challenge */ = {
 			isa = PBXGroup;
 			children = (
-				57DA98691F100154004FCACD /* AppDelegate.swift */,
-				57DA986B1F100154004FCACD /* ViewController.swift */,
-				57DA986D1F100154004FCACD /* Main.storyboard */,
 				57DA98701F100154004FCACD /* Assets.xcassets */,
-				57DA98721F100154004FCACD /* LaunchScreen.storyboard */,
+				573599041F10055B00821FFA /* Constants */,
+				573598F91F10042500821FFA /* Core */,
+				573598F71F10041700821FFA /* Extensions */,
+				5713A6411F12A4990096F0FE /* Helpers */,
 				57DA98751F100154004FCACD /* Info.plist */,
+				573598F51F10040400821FFA /* Model */,
+				573598F81F10041D00821FFA /* Protocols */,
+				573599051F10057000821FFA /* UI */,
+				573598F61F10040F00821FFA /* ViewControllers */,
+				573598F41F1003FE00821FFA /* ViewModel */,
 			);
 			path = altran_challenge;
 			sourceTree = "<group>";
@@ -90,10 +232,40 @@
 		57DA987D1F100154004FCACD /* altran_challengeTests */ = {
 			isa = PBXGroup;
 			children = (
-				57DA987E1F100154004FCACD /* altran_challengeTests.swift */,
+				57E050131F131BE1002008AC /* Helpers */,
+				5713A64E1F12CA0E0096F0FE /* Mocks */,
 				57DA98801F100154004FCACD /* Info.plist */,
+				5713A6451F12A73C0096F0FE /* GeneratorTests.swift */,
+				5713A64A1F12AF060096F0FE /* GnomeTests.swift */,
+				5713A64C1F12C9A30096F0FE /* GnomeListViewModelTests.swift */,
 			);
 			path = altran_challengeTests;
+			sourceTree = "<group>";
+		};
+		57E050131F131BE1002008AC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				57E050111F12F96C002008AC /* ObjectHelper.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		9C37714CDA1F85BFEE5FDA0E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F4E1E826A027B55B33330A61 /* Pods-altran_challenge.debug.xcconfig */,
+				AEB8891DCCE4ADF0EB817A98 /* Pods-altran_challenge.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B3BE50173E23E3E0280A9E3E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				573598FD1F1004B900821FFA /* CoreData.framework */,
+				688EAEAEFF4C76E46F171DE3 /* Pods_altran_challenge.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -103,9 +275,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 57DA98831F100154004FCACD /* Build configuration list for PBXNativeTarget "altran_challenge" */;
 			buildPhases = (
+				4162AC35769BF08F2F79DFB1 /* [CP] Check Pods Manifest.lock */,
 				57DA98621F100154004FCACD /* Sources */,
 				57DA98631F100154004FCACD /* Frameworks */,
 				57DA98641F100154004FCACD /* Resources */,
+				496FC32517EEF3AEEB09F776 /* [CP] Embed Pods Frameworks */,
+				956C1244E02461CF83A32119 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -195,13 +370,73 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4162AC35769BF08F2F79DFB1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		496FC32517EEF3AEEB09F776 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-altran_challenge/Pods-altran_challenge-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		956C1244E02461CF83A32119 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-altran_challenge/Pods-altran_challenge-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		57DA98621F100154004FCACD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57DA986C1F100154004FCACD /* ViewController.swift in Sources */,
+				5713A6501F12CB290096F0FE /* NSManagedObjectContext+Default.swift in Sources */,
+				573599141F10086E00821FFA /* ViewControllerProtocol.swift in Sources */,
+				57E050151F13283E002008AC /* Professions+Methods.swift in Sources */,
+				5713A6431F12A4C90096F0FE /* Generator.swift in Sources */,
+				57DA986C1F100154004FCACD /* GnomeListView.swift in Sources */,
 				57DA986A1F100154004FCACD /* AppDelegate.swift in Sources */,
+				5735990A1F1005D100821FFA /* NetworkManager.swift in Sources */,
+				573599191F1008B900821FFA /* UIColor+Default.swift in Sources */,
+				573599161F10086E00821FFA /* CoreDataProtocol.swift in Sources */,
+				573599021F1004F400821FFA /* Model.xcdatamodeld in Sources */,
+				573599081F1005D100821FFA /* CoreDataStack.swift in Sources */,
+				5735990D1F10073B00821FFA /* Constants.swift in Sources */,
+				573599101F1007B700821FFA /* GnomeListViewModel.swift in Sources */,
+				5713A6481F12AB240096F0FE /* Gnome+Methods.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,7 +444,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57DA987F1F100154004FCACD /* altran_challengeTests.swift in Sources */,
+				5713A64B1F12AF060096F0FE /* GnomeTests.swift in Sources */,
+				5735990E1F10073B00821FFA /* Constants.swift in Sources */,
+				5713A64D1F12C9A30096F0FE /* GnomeListViewModelTests.swift in Sources */,
+				5735990B1F1005D100821FFA /* NetworkManager.swift in Sources */,
+				57E050121F12F96C002008AC /* ObjectHelper.swift in Sources */,
+				573599091F1005D100821FFA /* CoreDataStack.swift in Sources */,
+				5713A6461F12A73C0096F0FE /* GeneratorTests.swift in Sources */,
+				5735991A1F1008B900821FFA /* UIColor+Default.swift in Sources */,
+				573599111F1007B700821FFA /* GnomeListViewModel.swift in Sources */,
+				5713A6441F12A4C90096F0FE /* Generator.swift in Sources */,
+				573599151F10086E00821FFA /* ViewControllerProtocol.swift in Sources */,
+				573599171F10086E00821FFA /* CoreDataProtocol.swift in Sources */,
+				5713A6511F12CB290096F0FE /* NSManagedObjectContext+Default.swift in Sources */,
+				5713A6491F12AB240096F0FE /* Gnome+Methods.swift in Sources */,
+				573599031F1004F400821FFA /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +587,7 @@
 		};
 		57DA98841F100154004FCACD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4E1E826A027B55B33330A61 /* Pods-altran_challenge.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9NM4DLTS84;
@@ -351,6 +601,7 @@
 		};
 		57DA98851F100154004FCACD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AEB8891DCCE4ADF0EB817A98 /* Pods-altran_challenge.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9NM4DLTS84;
@@ -411,6 +662,7 @@
 				57DA98851F100154004FCACD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		57DA98861F100154004FCACD /* Build configuration list for PBXNativeTarget "altran_challengeTests" */ = {
 			isa = XCConfigurationList;
@@ -419,8 +671,22 @@
 				57DA98881F100154004FCACD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		573599001F1004F400821FFA /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				573599011F1004F400821FFA /* Model.xcdatamodel */,
+			);
+			currentVersion = 573599011F1004F400821FFA /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 57DA985E1F100154004FCACD /* Project object */;
 }

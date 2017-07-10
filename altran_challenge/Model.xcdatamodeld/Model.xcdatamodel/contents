@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Gnome" representedClassName="Gnome" syncable="YES" codeGenerationType="class">
+        <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="hairColor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hasFriends" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="height" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="pictureUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="weight" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="friends" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Gnome" inverseName="friends" inverseEntity="Gnome" syncable="YES"/>
+        <relationship name="professions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Profession" inverseName="gnomes" inverseEntity="Profession" syncable="YES"/>
+    </entity>
+    <entity name="Profession" representedClassName="Profession" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="gnomes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Gnome" inverseName="professions" inverseEntity="Gnome" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Gnome" positionX="-63" positionY="-18" width="128" height="195"/>
+        <element name="Profession" positionX="-54" positionY="-9" width="128" height="90"/>
+    </elements>
+</model>
