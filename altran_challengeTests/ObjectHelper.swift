@@ -10,11 +10,16 @@ import Foundation
 
 struct ObjectHelper {
     
-    static func gnomeObjectMock() -> NSMutableDictionary {
+    // MARK: - GnomeListViewModelTests
+    
+    /// JSON Gnome Mock object
+    ///
+    /// - Returns: JSON object
+    static func gnomeJsonMock(name: String? = nil) -> JSON {
         
         let object = NSMutableDictionary()
         
-        object.setValue("David Martinez", forKey: "name")
+        object.setValue(name ?? "David Martinez", forKey: "name")
         object.setValue(64, forKey: "age")
         object.setValue(12.98, forKey: "weight")
         object.setValue(6.87, forKey: "height")
@@ -26,11 +31,13 @@ struct ObjectHelper {
         
     }
     
-    static func faultGnomeObjectMock() -> NSMutableDictionary {
+    /// JSON Gnome Mock object without a name
+    ///
+    /// - Returns: JSON object
+    static func noNameGnomeJsonMock() -> JSON {
         
         let object = NSMutableDictionary()
         
-        object.setValue("", forKey: "name")
         object.setValue(64, forKey: "age")
         object.setValue(12.98, forKey: "weight")
         object.setValue(6.87, forKey: "height")
@@ -41,5 +48,31 @@ struct ObjectHelper {
         return object
         
     }
+    
+    /// JSON Gnome Mock object with only name
+    ///
+    /// - Returns: JSON object
+    static func onlyNameGnomeJsonMock() -> JSON {
+        
+        let object = NSMutableDictionary()
+        
+        object.setValue("David Martinez", forKey: "name")
+        
+        return object
+    }
+    
+    static var stubFetchedObjectsGreaterThanZero: [Int] {
+        return [1,2,3,4,5,6,6,7,8]
+    }
+    
+    static var stubFetchedObjectsEqualsToZero: [Int] {
+        return []
+    }
+    
+    static var stubFetchedObjectsNil: [Int]? {
+        return nil
+    }
+    
+    // MARK: -
     
 }

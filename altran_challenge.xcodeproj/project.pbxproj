@@ -16,6 +16,9 @@
 		5713A64D1F12C9A30096F0FE /* GnomeListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713A64C1F12C9A30096F0FE /* GnomeListViewModelTests.swift */; };
 		5713A6501F12CB290096F0FE /* NSManagedObjectContext+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713A64F1F12CB290096F0FE /* NSManagedObjectContext+Default.swift */; };
 		5713A6511F12CB290096F0FE /* NSManagedObjectContext+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713A64F1F12CB290096F0FE /* NSManagedObjectContext+Default.swift */; };
+		5733FFF11F14873F002573F0 /* GnomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5733FFEF1F14873F002573F0 /* GnomeCell.swift */; };
+		5733FFF31F14873F002573F0 /* GnomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5733FFF01F14873F002573F0 /* GnomeCell.xib */; };
+		5733FFF41F14873F002573F0 /* GnomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5733FFF01F14873F002573F0 /* GnomeCell.xib */; };
 		573598FE1F1004B900821FFA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573598FD1F1004B900821FFA /* CoreData.framework */; };
 		573599021F1004F400821FFA /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 573599001F1004F400821FFA /* Model.xcdatamodeld */; };
 		573599031F1004F400821FFA /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 573599001F1004F400821FFA /* Model.xcdatamodeld */; };
@@ -27,19 +30,32 @@
 		5735990E1F10073B00821FFA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5735990C1F10073B00821FFA /* Constants.swift */; };
 		573599101F1007B700821FFA /* GnomeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5735990F1F1007B700821FFA /* GnomeListViewModel.swift */; };
 		573599111F1007B700821FFA /* GnomeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5735990F1F1007B700821FFA /* GnomeListViewModel.swift */; };
-		573599141F10086E00821FFA /* ViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573599121F10086E00821FFA /* ViewControllerProtocol.swift */; };
-		573599151F10086E00821FFA /* ViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573599121F10086E00821FFA /* ViewControllerProtocol.swift */; };
+		573599141F10086E00821FFA /* Customizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573599121F10086E00821FFA /* Customizable.swift */; };
+		573599151F10086E00821FFA /* Customizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573599121F10086E00821FFA /* Customizable.swift */; };
 		573599161F10086E00821FFA /* CoreDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573599131F10086E00821FFA /* CoreDataProtocol.swift */; };
 		573599171F10086E00821FFA /* CoreDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573599131F10086E00821FFA /* CoreDataProtocol.swift */; };
 		573599191F1008B900821FFA /* UIColor+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573599181F1008B900821FFA /* UIColor+Default.swift */; };
 		5735991A1F1008B900821FFA /* UIColor+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573599181F1008B900821FFA /* UIColor+Default.swift */; };
+		5742ADF61F13DEE1009E48B1 /* ProfessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5742ADF51F13DEE1009E48B1 /* ProfessionTests.swift */; };
+		5748CBFF1F13FC2300FDC175 /* Profession+Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E050141F13283E002008AC /* Profession+Methods.swift */; };
+		5748CC021F1469A400FDC175 /* SpyGnomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748CC011F1469A400FDC175 /* SpyGnomeListView.swift */; };
 		57DA986A1F100154004FCACD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98691F100154004FCACD /* AppDelegate.swift */; };
 		57DA986C1F100154004FCACD /* GnomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA986B1F100154004FCACD /* GnomeListView.swift */; };
 		57DA986F1F100154004FCACD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57DA986D1F100154004FCACD /* Main.storyboard */; };
 		57DA98711F100154004FCACD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57DA98701F100154004FCACD /* Assets.xcassets */; };
 		57DA98741F100154004FCACD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57DA98721F100154004FCACD /* LaunchScreen.storyboard */; };
 		57E050121F12F96C002008AC /* ObjectHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E050111F12F96C002008AC /* ObjectHelper.swift */; };
-		57E050151F13283E002008AC /* Professions+Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E050141F13283E002008AC /* Professions+Methods.swift */; };
+		57E050151F13283E002008AC /* Profession+Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E050141F13283E002008AC /* Profession+Methods.swift */; };
+		57E6A3E61F154134002F33D6 /* CellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6A3E51F154134002F33D6 /* CellProtocol.swift */; };
+		57E6A3E71F1542AE002F33D6 /* CellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6A3E51F154134002F33D6 /* CellProtocol.swift */; };
+		57E6A3E91F1542D9002F33D6 /* CellProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6A3E81F1542D9002F33D6 /* CellProtocolTests.swift */; };
+		57E6A3EC1F15462D002F33D6 /* MockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6A3EA1F15462D002F33D6 /* MockTableViewCell.swift */; };
+		57E6A3ED1F15462D002F33D6 /* MockTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57E6A3EB1F15462D002F33D6 /* MockTableViewCell.xib */; };
+		57E6A3EF1F155AE3002F33D6 /* UIImage+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6A3EE1F155AE3002F33D6 /* UIImage+Default.swift */; };
+		57E6A3F11F156D3B002F33D6 /* MockCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6A3F01F156D3B002F33D6 /* MockCoreDataStack.swift */; };
+		57E6A3F31F156DBF002F33D6 /* MockGnome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6A3F21F156DBF002F33D6 /* MockGnome.swift */; };
+		57E6A4011F157BC3002F33D6 /* UINavigationController+ExtendedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6A4001F157BC3002F33D6 /* UINavigationController+ExtendedView.swift */; };
+		7E4F7DAC5659EE4F40DA1CCA /* Pods_altran_challengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32C88D6B07C6CA62F65B23FF /* Pods_altran_challengeTests.framework */; };
 		CE79D53B5A625DA7ABC0D023 /* Pods_altran_challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 688EAEAEFF4C76E46F171DE3 /* Pods_altran_challenge.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,21 +70,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09089EC7C92A8F1A0536CB94 /* Pods-altran_challengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-altran_challengeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-altran_challengeTests/Pods-altran_challengeTests.release.xcconfig"; sourceTree = "<group>"; };
+		32C88D6B07C6CA62F65B23FF /* Pods_altran_challengeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_altran_challengeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A3E8D23BB020031492008EC /* Pods-altran_challengeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-altran_challengeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-altran_challengeTests/Pods-altran_challengeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5713A6421F12A4C90096F0FE /* Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
 		5713A6451F12A73C0096F0FE /* GeneratorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratorTests.swift; sourceTree = "<group>"; };
 		5713A6471F12AB240096F0FE /* Gnome+Methods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Gnome+Methods.swift"; sourceTree = "<group>"; };
 		5713A64A1F12AF060096F0FE /* GnomeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GnomeTests.swift; sourceTree = "<group>"; };
 		5713A64C1F12C9A30096F0FE /* GnomeListViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GnomeListViewModelTests.swift; sourceTree = "<group>"; };
 		5713A64F1F12CB290096F0FE /* NSManagedObjectContext+Default.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Default.swift"; sourceTree = "<group>"; };
+		5733FFEF1F14873F002573F0 /* GnomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GnomeCell.swift; sourceTree = "<group>"; };
+		5733FFF01F14873F002573F0 /* GnomeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GnomeCell.xib; sourceTree = "<group>"; };
 		573598FD1F1004B900821FFA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		573599011F1004F400821FFA /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		573599061F1005D100821FFA /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		573599071F1005D100821FFA /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5735990C1F10073B00821FFA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5735990F1F1007B700821FFA /* GnomeListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GnomeListViewModel.swift; sourceTree = "<group>"; };
-		573599121F10086E00821FFA /* ViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerProtocol.swift; sourceTree = "<group>"; };
+		573599121F10086E00821FFA /* Customizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customizable.swift; sourceTree = "<group>"; };
 		573599131F10086E00821FFA /* CoreDataProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataProtocol.swift; sourceTree = "<group>"; };
 		573599181F1008B900821FFA /* UIColor+Default.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Default.swift"; sourceTree = "<group>"; };
+		5742ADF51F13DEE1009E48B1 /* ProfessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfessionTests.swift; sourceTree = "<group>"; };
+		5748CC011F1469A400FDC175 /* SpyGnomeListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpyGnomeListView.swift; sourceTree = "<group>"; };
 		57DA98661F100154004FCACD /* altran_challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = altran_challenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57DA98691F100154004FCACD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57DA986B1F100154004FCACD /* GnomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GnomeListView.swift; sourceTree = "<group>"; };
@@ -79,7 +102,17 @@
 		57DA987A1F100154004FCACD /* altran_challengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = altran_challengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		57DA98801F100154004FCACD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57E050111F12F96C002008AC /* ObjectHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectHelper.swift; sourceTree = "<group>"; };
-		57E050141F13283E002008AC /* Professions+Methods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Professions+Methods.swift"; sourceTree = "<group>"; };
+		57E050141F13283E002008AC /* Profession+Methods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Profession+Methods.swift"; sourceTree = "<group>"; };
+		57E6A3E51F154134002F33D6 /* CellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellProtocol.swift; sourceTree = "<group>"; };
+		57E6A3E81F1542D9002F33D6 /* CellProtocolTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellProtocolTests.swift; sourceTree = "<group>"; };
+		57E6A3EA1F15462D002F33D6 /* MockTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockTableViewCell.swift; sourceTree = "<group>"; };
+		57E6A3EB1F15462D002F33D6 /* MockTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MockTableViewCell.xib; sourceTree = "<group>"; };
+		57E6A3EE1F155AE3002F33D6 /* UIImage+Default.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Default.swift"; sourceTree = "<group>"; };
+		57E6A3F01F156D3B002F33D6 /* MockCoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCoreDataStack.swift; sourceTree = "<group>"; };
+		57E6A3F21F156DBF002F33D6 /* MockGnome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockGnome.swift; sourceTree = "<group>"; };
+		57E6A3F41F1573FB002F33D6 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = "../../Library/Developer/Xcode/DerivedData/altran_challenge-fgzhmbihlyrobuejmwfqigtpkwtb/Build/Products/Debug-iphonesimulator/AlamofireImage/AlamofireImage.framework"; sourceTree = "<group>"; };
+		57E6A3F61F15740F002F33D6 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../Library/Developer/Xcode/DerivedData/altran_challenge-fgzhmbihlyrobuejmwfqigtpkwtb/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
+		57E6A4001F157BC3002F33D6 /* UINavigationController+ExtendedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+ExtendedView.swift"; sourceTree = "<group>"; };
 		688EAEAEFF4C76E46F171DE3 /* Pods_altran_challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_altran_challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEB8891DCCE4ADF0EB817A98 /* Pods-altran_challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-altran_challenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-altran_challenge/Pods-altran_challenge.release.xcconfig"; sourceTree = "<group>"; };
 		F4E1E826A027B55B33330A61 /* Pods-altran_challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-altran_challenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-altran_challenge/Pods-altran_challenge.debug.xcconfig"; sourceTree = "<group>"; };
@@ -99,6 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E4F7DAC5659EE4F40DA1CCA /* Pods_altran_challengeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +150,10 @@
 		5713A64E1F12CA0E0096F0FE /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				57E6A3EA1F15462D002F33D6 /* MockTableViewCell.swift */,
+				57E6A3EB1F15462D002F33D6 /* MockTableViewCell.xib */,
+				57E6A3F01F156D3B002F33D6 /* MockCoreDataStack.swift */,
+				57E6A3F21F156DBF002F33D6 /* MockGnome.swift */,
 			);
 			name = Mocks;
 			sourceTree = "<group>";
@@ -133,7 +171,7 @@
 			children = (
 				573599001F1004F400821FFA /* Model.xcdatamodeld */,
 				5713A6471F12AB240096F0FE /* Gnome+Methods.swift */,
-				57E050141F13283E002008AC /* Professions+Methods.swift */,
+				57E050141F13283E002008AC /* Profession+Methods.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -151,6 +189,8 @@
 			children = (
 				573599181F1008B900821FFA /* UIColor+Default.swift */,
 				5713A64F1F12CB290096F0FE /* NSManagedObjectContext+Default.swift */,
+				57E6A3EE1F155AE3002F33D6 /* UIImage+Default.swift */,
+				57E6A4001F157BC3002F33D6 /* UINavigationController+ExtendedView.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -158,8 +198,9 @@
 		573598F81F10041D00821FFA /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				573599121F10086E00821FFA /* ViewControllerProtocol.swift */,
+				573599121F10086E00821FFA /* Customizable.swift */,
 				573599131F10086E00821FFA /* CoreDataProtocol.swift */,
+				57E6A3E51F154134002F33D6 /* CellProtocol.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -185,10 +226,28 @@
 		573599051F10057000821FFA /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				5748CC031F14779F00FDC175 /* Cell */,
 				57DA986D1F100154004FCACD /* Main.storyboard */,
 				57DA98721F100154004FCACD /* LaunchScreen.storyboard */,
 			);
 			name = UI;
+			sourceTree = "<group>";
+		};
+		5748CC001F14697E00FDC175 /* Spy */ = {
+			isa = PBXGroup;
+			children = (
+				5748CC011F1469A400FDC175 /* SpyGnomeListView.swift */,
+			);
+			name = Spy;
+			sourceTree = "<group>";
+		};
+		5748CC031F14779F00FDC175 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5733FFEF1F14873F002573F0 /* GnomeCell.swift */,
+				5733FFF01F14873F002573F0 /* GnomeCell.xib */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		57DA985D1F100154004FCACD = {
@@ -232,12 +291,15 @@
 		57DA987D1F100154004FCACD /* altran_challengeTests */ = {
 			isa = PBXGroup;
 			children = (
+				5748CC001F14697E00FDC175 /* Spy */,
 				57E050131F131BE1002008AC /* Helpers */,
 				5713A64E1F12CA0E0096F0FE /* Mocks */,
 				57DA98801F100154004FCACD /* Info.plist */,
 				5713A6451F12A73C0096F0FE /* GeneratorTests.swift */,
 				5713A64A1F12AF060096F0FE /* GnomeTests.swift */,
 				5713A64C1F12C9A30096F0FE /* GnomeListViewModelTests.swift */,
+				5742ADF51F13DEE1009E48B1 /* ProfessionTests.swift */,
+				57E6A3E81F1542D9002F33D6 /* CellProtocolTests.swift */,
 			);
 			path = altran_challengeTests;
 			sourceTree = "<group>";
@@ -255,6 +317,8 @@
 			children = (
 				F4E1E826A027B55B33330A61 /* Pods-altran_challenge.debug.xcconfig */,
 				AEB8891DCCE4ADF0EB817A98 /* Pods-altran_challenge.release.xcconfig */,
+				3A3E8D23BB020031492008EC /* Pods-altran_challengeTests.debug.xcconfig */,
+				09089EC7C92A8F1A0536CB94 /* Pods-altran_challengeTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -262,8 +326,11 @@
 		B3BE50173E23E3E0280A9E3E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				57E6A3F61F15740F002F33D6 /* Alamofire.framework */,
+				57E6A3F41F1573FB002F33D6 /* AlamofireImage.framework */,
 				573598FD1F1004B900821FFA /* CoreData.framework */,
 				688EAEAEFF4C76E46F171DE3 /* Pods_altran_challenge.framework */,
+				32C88D6B07C6CA62F65B23FF /* Pods_altran_challengeTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -295,9 +362,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 57DA98861F100154004FCACD /* Build configuration list for PBXNativeTarget "altran_challengeTests" */;
 			buildPhases = (
+				71ACCBEC71F3DBF9A476000C /* [CP] Check Pods Manifest.lock */,
 				57DA98761F100154004FCACD /* Sources */,
 				57DA98771F100154004FCACD /* Frameworks */,
 				57DA98781F100154004FCACD /* Resources */,
+				D3897991AFDC677A8C62C15F /* [CP] Embed Pods Frameworks */,
+				6BFC78DA5FCEFF6F1550D93E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -355,6 +425,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5733FFF31F14873F002573F0 /* GnomeCell.xib in Resources */,
 				57DA98741F100154004FCACD /* LaunchScreen.storyboard in Resources */,
 				57DA98711F100154004FCACD /* Assets.xcassets in Resources */,
 				57DA986F1F100154004FCACD /* Main.storyboard in Resources */,
@@ -365,6 +436,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5733FFF41F14873F002573F0 /* GnomeCell.xib in Resources */,
+				57E6A3ED1F15462D002F33D6 /* MockTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +474,36 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-altran_challenge/Pods-altran_challenge-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		6BFC78DA5FCEFF6F1550D93E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-altran_challengeTests/Pods-altran_challengeTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		71ACCBEC71F3DBF9A476000C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		956C1244E02461CF83A32119 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -416,6 +519,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-altran_challenge/Pods-altran_challenge-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D3897991AFDC677A8C62C15F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-altran_challengeTests/Pods-altran_challengeTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -424,9 +542,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5713A6501F12CB290096F0FE /* NSManagedObjectContext+Default.swift in Sources */,
-				573599141F10086E00821FFA /* ViewControllerProtocol.swift in Sources */,
-				57E050151F13283E002008AC /* Professions+Methods.swift in Sources */,
+				573599141F10086E00821FFA /* Customizable.swift in Sources */,
+				57E050151F13283E002008AC /* Profession+Methods.swift in Sources */,
+				57E6A4011F157BC3002F33D6 /* UINavigationController+ExtendedView.swift in Sources */,
 				5713A6431F12A4C90096F0FE /* Generator.swift in Sources */,
+				57E6A3EF1F155AE3002F33D6 /* UIImage+Default.swift in Sources */,
+				5733FFF11F14873F002573F0 /* GnomeCell.swift in Sources */,
+				57E6A3E61F154134002F33D6 /* CellProtocol.swift in Sources */,
 				57DA986C1F100154004FCACD /* GnomeListView.swift in Sources */,
 				57DA986A1F100154004FCACD /* AppDelegate.swift in Sources */,
 				5735990A1F1005D100821FFA /* NetworkManager.swift in Sources */,
@@ -444,6 +566,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57E6A3E71F1542AE002F33D6 /* CellProtocol.swift in Sources */,
+				5748CBFF1F13FC2300FDC175 /* Profession+Methods.swift in Sources */,
 				5713A64B1F12AF060096F0FE /* GnomeTests.swift in Sources */,
 				5735990E1F10073B00821FFA /* Constants.swift in Sources */,
 				5713A64D1F12C9A30096F0FE /* GnomeListViewModelTests.swift in Sources */,
@@ -452,11 +576,17 @@
 				573599091F1005D100821FFA /* CoreDataStack.swift in Sources */,
 				5713A6461F12A73C0096F0FE /* GeneratorTests.swift in Sources */,
 				5735991A1F1008B900821FFA /* UIColor+Default.swift in Sources */,
+				57E6A3F31F156DBF002F33D6 /* MockGnome.swift in Sources */,
 				573599111F1007B700821FFA /* GnomeListViewModel.swift in Sources */,
 				5713A6441F12A4C90096F0FE /* Generator.swift in Sources */,
-				573599151F10086E00821FFA /* ViewControllerProtocol.swift in Sources */,
+				573599151F10086E00821FFA /* Customizable.swift in Sources */,
+				57E6A3E91F1542D9002F33D6 /* CellProtocolTests.swift in Sources */,
+				5748CC021F1469A400FDC175 /* SpyGnomeListView.swift in Sources */,
+				5742ADF61F13DEE1009E48B1 /* ProfessionTests.swift in Sources */,
+				57E6A3EC1F15462D002F33D6 /* MockTableViewCell.swift in Sources */,
 				573599171F10086E00821FFA /* CoreDataProtocol.swift in Sources */,
 				5713A6511F12CB290096F0FE /* NSManagedObjectContext+Default.swift in Sources */,
+				57E6A3F11F156D3B002F33D6 /* MockCoreDataStack.swift in Sources */,
 				5713A6491F12AB240096F0FE /* Gnome+Methods.swift in Sources */,
 				573599031F1004F400821FFA /* Model.xcdatamodeld in Sources */,
 			);
@@ -592,10 +722,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9NM4DLTS84;
 				INFOPLIST_FILE = altran_challenge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.David.altran-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -606,15 +738,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9NM4DLTS84;
 				INFOPLIST_FILE = altran_challenge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.David.altran-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 		57DA98871F100154004FCACD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A3E8D23BB020031492008EC /* Pods-altran_challengeTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -630,6 +765,7 @@
 		};
 		57DA98881F100154004FCACD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09089EC7C92A8F1A0536CB94 /* Pods-altran_challengeTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

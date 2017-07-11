@@ -19,7 +19,7 @@ class CoreDataStack {
     }()
     
     
-    private init() {
+    init() {
         
         // This resource is the same name as your xcdatamodeld contained in your project.
         guard let modelURL = Bundle.main.url(forResource: "Model", withExtension:"momd") else {

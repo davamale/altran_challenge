@@ -1,14 +1,14 @@
 //
-//  GeneratorTests.swift
+//  ProfessionTests.swift
 //  altran_challenge
 //
-//  Created by Dava on 7/9/17.
+//  Created by Dava on 7/10/17.
 //
 //
 
 import XCTest
 
-class String_IdGenTests: XCTestCase {
+class ProfessionTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -20,20 +20,20 @@ class String_IdGenTests: XCTestCase {
         super.tearDown()
     }
     
-    
-    func testId() {
+    func testSave() {
         
         /*
          given:
-            new generated id
+         
          */
-        let id_1 = Generator.newId
+        
         
         // when:
-        let id_2 = Generator.newId
+        
         
         // then:
-        XCTAssert(id_1 != id_2, "id's must be unique")
+        
+        
         
     }
     

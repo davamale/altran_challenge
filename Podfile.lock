@@ -1,15 +1,18 @@
 PODS:
-  - AndroidDialogAlert (0.2.0)
-  - STXImageCache (1.0.2)
+  - Alamofire (4.5.0)
+  - AlamofireImage (3.2.0):
+    - Alamofire (~> 4.1)
+  - AndroidDialogAlert (0.2.1)
 
 DEPENDENCIES:
+  - AlamofireImage
   - AndroidDialogAlert
-  - STXImageCache
 
 SPEC CHECKSUMS:
-  AndroidDialogAlert: e95ca29a3537e8f38c3880854820234981fb7b27
-  STXImageCache: d41f98b0d35426f1dd94f5ae80f7437027da64d1
+  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
+  AndroidDialogAlert: 4f2b2b585a15430608b6cd0062495548baaa990d
 
-PODFILE CHECKSUM: 52e6a36d6cffde9032deb48f5bfa3ad62bcef33e
+PODFILE CHECKSUM: 1a2105112f3022373dffb88dc8ddfe5d294b8eee
 
 COCOAPODS: 1.2.0

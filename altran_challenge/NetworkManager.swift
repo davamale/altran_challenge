@@ -20,6 +20,7 @@ public typealias Response = (JSONArray?, NetworkError?) -> ()
 /// Network Errors
 public enum NetworkError: Error {
     case responseError(String)
+    case connectionError(String)
 }
 
 class NetworkManager: NSObject {
@@ -39,11 +40,17 @@ class NetworkManager: NSObject {
         
         let task = session.dataTask(with: request, completionHandler: {(data, response, error) in
             
+            if let error = error {
+                return completion(nil, NetworkError.connectionError(error.localizedDescription))
+            }
+            
             guard let data = data, let json = try? JSONSerialization.jsonObject(with: data, options: []) as? JSON else {
                 return completion(nil, NetworkError.responseError("Response Error"))
             }
             
-            completion(json?["Brastlewark"] as? JSONArray, nil)
+            DispatchQueue.main.async {
+                completion(json?["Brastlewark"] as? JSONArray, nil)
+            }
         });
 
         task.resume()

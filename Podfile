@@ -7,6 +7,12 @@ target 'altran_challenge' do
 
   # Pods for altran_challenge
   pod 'AndroidDialogAlert' # an alerts library. This is a simple library I published not so long ago.
-  pod 'STXImageCache' # retrieve and cache photos from URLs. 
+  pod 'AlamofireImage' # retrieve and cache photos from URLs.
 
+end
+
+target 'altran_challengeTests' do
+    use_frameworks!
+    # Pods for altran_challenge
+    
 end

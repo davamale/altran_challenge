@@ -14,22 +14,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        
-        NetworkManager.get(url: URL(string: Constants.Routes.gnomeInfo)!) { (json, error) in
-            
-            guard let gnomeList = json else {
-                return
-            }
-            
-            for gnome in gnomeList {
-                if let gnomeObject = Gnome.save(object: gnome) {
-                    
-                }
-            }
-        }
-        
+        prepareUI()
         return true
+    }
+}
+
+extension AppDelegate: Customizable {
+    func prepareUI() {
+        UINavigationBar.appearance().barTintColor = .defaultBlue
     }
 }
 

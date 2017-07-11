@@ -8,17 +8,15 @@
 
 import XCTest
 
-class SpyGnomeListView: GnomeListViewModelDelegate {
-    
-    
-    
-}
-
 class GnomeListViewModelTests: XCTestCase {
+    
+    let spyViewController = SpyGnomeListView()
+    var viewModel: GnomeListViewModel!
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        viewModel = GnomeListViewModel(delegate: spyViewController)
     }
     
     override func tearDown() {
@@ -26,45 +24,95 @@ class GnomeListViewModelTests: XCTestCase {
         super.tearDown()
     }
     
+    // MARK: - Save List Test
     func testSaveList() {
-        
-        let viewModel = GnomeListViewModel()
-//        let promise = expe
+
+        spyViewController.promise = expectation(description: "Calls didFinishLoading delegate method")
         
         /*
          given:
             A well formed json object
          */
-        let gnomeList = ObjectHelper.gnomeObjectMock()
-        
+        let gnomeList = ObjectHelper.gnomeJsonMock()
+
         // when:
         viewModel.saveList(gnomeList: [gnomeList])
         
-        guard let gnomeObject = Gnome.save(object: gnomeList) else {
-            return XCTFail("Gnome Object not saved")
-        }
-        
         // then:
-        XCTAssert(gnomeObject.name != nil, "Object not created properly")
-        XCTAssert(!gnomeObject.name!.isEmpty, "Object not created properly")
-        
+        waitForExpectations(timeout: 1) { (error) in
+            if error != nil {
+                XCTFail(error!.localizedDescription)
+            }
+            
+            XCTAssert(self.spyViewController.finishLoading == true, "didFinishLoading wasn't called")
+        }
+    }
+    
+    // MARK: - Has Fetched Object Test
+    func testHasFetchedObjects() {
         
         /*
          given:
-            A Faulty json object
+         fetchedResultsController.fetchedObjects.count greater than zero
          */
-        let faultGnomeList = ObjectHelper.faultGnomeObjectMock()
+        let fetchedObjectsGreaterThanZero = ObjectHelper.stubFetchedObjectsGreaterThanZero
         
         // when:
-        guard let _ = Gnome.save(object: faultGnomeList) else {
-            // then:
-            XCTAssertTrue(true, "Fault object")
-            
-            return
-        }
+        var hasFetchedObjects = viewModel.hasFetchedObjects(in: fetchedObjectsGreaterThanZero)
         
+        // then
+        XCTAssertTrue(hasFetchedObjects, "Objects fetched are greater than zero")
         
-        XCTFail("Fault object, Gnome mustn't be created")
+        /*
+         given:
+         fetchedResultsController.fetchedObjects nil
+         */
+        let fetchedObjectsEqualToZero = ObjectHelper.stubFetchedObjectsEqualsToZero
+        
+        // when:
+        hasFetchedObjects = viewModel.hasFetchedObjects(in: fetchedObjectsEqualToZero)
+        
+        // then
+        XCTAssertFalse(hasFetchedObjects, "Objects are equal to zero")
+        
+        /*
+         given:
+         fetchedResultsController.fetchedObjects.count equals to zero
+         */
+        let fetchedObjectsNil = ObjectHelper.stubFetchedObjectsNil
+        
+        // when:
+        hasFetchedObjects = viewModel.hasFetchedObjects(in: fetchedObjectsNil)
+        
+        // then
+        XCTAssertFalse(hasFetchedObjects, "Array object is nil")
     }
     
+    // MARK: - Initial Fetch Test
+    func testInitialFetch() {
+        
+    }
+    
+    // MARK: - Object at Index Test
+//    func testGnomeAtIndexPath() {
+//        
+//        // given:
+//        let gnomeArray = [ObjectHelper.gnomeJsonMock(name: "William Anderson"), ObjectHelper.gnomeJsonMock()]
+//        let indexPath = IndexPath(item: 1, section: 0)
+//        
+//        // when:
+//        let calculatedObject = viewModel.object(atIndexPath:indexPath)
+//        
+//        XCTAssert(gnomeArray[indexPath.row] == calculatedObject)
+//    }
+    
 }
+
+
+
+
+
+
+
+
+

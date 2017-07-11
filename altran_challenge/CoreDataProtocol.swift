@@ -13,6 +13,7 @@ public protocol ManagedObjectType: class {
     
     static var entityName: String { get }
     static var defaultSortDescriptors: [NSSortDescriptor] { get }
+    static var sortedFetchRequest: NSFetchRequest<NSFetchRequestResult> { get }
 }
 
 
@@ -47,7 +48,7 @@ public protocol ManagedObjectMethods: class {
      
      - Returns: generic type <Object: NSManagedObject>
      */
-    static func save(object: NSDictionary?) -> ModelObject?
+    static func save<Object>(object: Object?) -> ModelObject?
     
     /**
      Fetch all objects for the Entity type and returns them.
@@ -72,7 +73,7 @@ extension ManagedObjectMethods where Self: ManagedObjectType {
     
     public static func fetchAll<Entity: NSManagedObject>() -> [Entity]? {
         
-        let request = Entity.fetchRequest()
+        let request = sortedFetchRequest
         
         guard let fetchedObjects = try? CoreDataStack.shared.context.fetch(request) as? [Entity], fetchedObjects!.count > 0 else {
             return nil
@@ -91,7 +92,6 @@ extension ManagedObjectMethods where Self: ManagedObjectType {
         
         if let results = fetchResult {
             if !results.isEmpty && results.count > 0 {
-                print(results[0])
                 return results[0]
             }
         }
