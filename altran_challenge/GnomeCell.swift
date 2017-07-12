@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AlamofireImage
 
 class GnomeCell: UITableViewCell {
 
@@ -38,8 +37,8 @@ extension GnomeCell: CellProtocol {
         gnomeFriendsImageView.image = gnome.hasFriends ? UIImage.happyFace : UIImage.sadFace
         
         // image
-        if let pictureUrl = gnome.pictureUrl, let url = URL(string:pictureUrl) {
-            gnomeImageView.af_setImage(withURL: url)
+        if let pictureUrl = gnome.pictureUrl {
+            gnomeImageView.loadImage(from: pictureUrl)
         }
         
         // professions label

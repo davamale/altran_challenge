@@ -17,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         prepareUI()
         return true
     }
+    
+//    func applicationWillTerminate(_ application: UIApplication) {
+//        NetworkManager.shared.cache.removeAllObjects()
+//    }
 }
 
 extension AppDelegate: Customizable {

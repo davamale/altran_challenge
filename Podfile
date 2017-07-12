@@ -7,7 +7,6 @@ target 'altran_challenge' do
 
   # Pods for altran_challenge
   pod 'AndroidDialogAlert' # an alerts library. This is a simple library I published not so long ago.
-  pod 'AlamofireImage' # retrieve and cache photos from URLs.
 
 end
 

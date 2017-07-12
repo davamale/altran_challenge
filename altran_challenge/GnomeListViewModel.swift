@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import AndroidDialogAlert
 
 protocol GnomeListViewModelDelegate: class {
     
@@ -38,7 +39,18 @@ protocol GnomeListViewModelDelegate: class {
     func endUpdates()
 }
 
+extension GnomeListViewModel {
+    enum Filter: Int {
+        case all
+        case noFriends
+        case noProfession
+    }
+}
+
+
 class GnomeListViewModel: NSObject {
+    
+    
     
     // MARK: - Properties
     fileprivate let delegate: GnomeListViewModelDelegate!

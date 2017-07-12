@@ -23,7 +23,21 @@ public enum NetworkError: Error {
     case connectionError(String)
 }
 
-class NetworkManager: NSObject {
+class NetworkManager {
+    
+    // MARK: Properties
+    let cache: NSCache<AnyObject, AnyObject>
+    
+    static let shared: NetworkManager = {
+        let singleton = NetworkManager()
+        return singleton
+    }()
+    
+    init() {
+        self.cache = NSCache()
+    }
+    
+    // MARK: - Class Method
     
     /// Performs an HTTP GET
     ///
@@ -52,8 +66,59 @@ class NetworkManager: NSObject {
                 completion(json?["Brastlewark"] as? JSONArray, nil)
             }
         });
-
+        
         task.resume()
+    }
+    
+    // MARK: - instance Method
+    
+    /// Loads image from given url. Verifies if there exist an image for the url, if not, downloads the image and cache it.
+    ///
+    /// - Parameters:
+    ///   - imageUrl: image url to download the image
+    ///   - completion: cache image (or newly downloaded image), error
+    func loadImage(from imageUrl: URL, with completion:@escaping (UIImage?, NetworkError?) -> Void) {
+        URLSession.shared.downloadTask(with: imageUrl) { (url, response, error) in
+            
+            // returns if image already exists
+            if let cacheImage = self.cacheImage(for: imageUrl.absoluteString as AnyObject) {
+                DispatchQueue.main.async {
+                    return completion(cacheImage, nil)
+                }
+            }
+            
+            guard let url = url, error == nil else {
+                completion(nil, NetworkError.responseError(error!.localizedDescription))
+                return
+            }
+            
+            do {
+                let data = try Data(contentsOf: url)
+                
+                guard let image = UIImage(data: data) else {
+                    return completion(nil, NetworkError.responseError("Image Data Corrupted"))
+                }
+                
+                // cache object
+                self.cache.setObject(image, forKey: imageUrl.absoluteString as AnyObject)
+                
+                DispatchQueue.main.async {
+                    return completion(image, nil)
+                }
+                
+            } catch {
+                completion(nil, NetworkError.responseError(error.localizedDescription))
+            }
+            
+            }.resume()
+    }
+    
+    /// Lookup if an image exist for the given key
+    ///
+    /// - Parameter key: key for the cache image
+    /// - Returns: Cached image
+    func cacheImage(for key: AnyObject) -> UIImage? {
+        return self.cache.object(forKey: key) as? UIImage
     }
 }
 

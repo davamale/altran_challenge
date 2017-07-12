@@ -93,6 +93,19 @@ class GnomeListViewModelTests: XCTestCase {
         
     }
     
+    func testHandleFilterSelection() {
+        
+        // given:
+        let allFilter = GnomeListViewModel.Filter.all
+        
+        // when:
+        let filteredObject = viewModel.handleSelected(filter: allFilter)
+        
+        // then:
+        
+        
+    }
+    
     // MARK: - Object at Index Test
 //    func testGnomeAtIndexPath() {
 //        

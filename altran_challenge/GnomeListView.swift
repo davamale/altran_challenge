@@ -45,12 +45,14 @@ class GnomeListView: UIViewController {
         return tv
     }()
     
-    fileprivate var filterControl: UISegmentedControl = {
+    fileprivate lazy var filterControl: UISegmentedControl = {
         
         let fc = UISegmentedControl(items: ["All", "No Friends", "No Job"])
         
         fc.tintColor = .white
         fc.translatesAutoresizingMaskIntoConstraints = false
+        fc.selectedSegmentIndex = 0
+        fc.addTarget(self, action: #selector(filterControlSelection(sender:)), for: .valueChanged)
         
         return fc
     }()
@@ -68,7 +70,9 @@ class GnomeListView: UIViewController {
     }
     
     //MARK: Actions
-    
+    @objc func filterControlSelection(sender: UISegmentedControl) {
+        
+    }
     
 }
 
