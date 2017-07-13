@@ -75,7 +75,7 @@ extension ManagedObjectMethods where Self: ManagedObjectType {
         
         let request = sortedFetchRequest
         
-        guard let fetchedObjects = try? CoreDataStack.shared.context.fetch(request) as? [Entity], fetchedObjects!.count > 0 else {
+        guard let fetchedObjects = try? CoreDataStack.shared.privateContext.fetch(request) as? [Entity], fetchedObjects!.count > 0 else {
             return nil
         }
  
@@ -88,7 +88,7 @@ extension ManagedObjectMethods where Self: ManagedObjectType {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
         request.predicate = NSPredicate(format: "%K = %@", key, value)
         
-        let fetchResult = (try? cdStack.context.fetch(request)) as? [Entity]
+        let fetchResult = (try? cdStack.privateContext.fetch(request)) as? [Entity]
         
         if let results = fetchResult {
             if !results.isEmpty && results.count > 0 {

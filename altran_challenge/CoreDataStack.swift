@@ -11,31 +11,41 @@ import CoreData
 
 class CoreDataStack {
     
-    private(set) var context: NSManagedObjectContext!
+    private(set) lazy var context: NSManagedObjectContext = {
+        let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        moc.persistentStoreCoordinator = self.persistentStoreCoordinator
+        return moc
+    }()
+    
+    private lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
+        return NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
+    }()
+    
+    /// Private Context
+    lazy var privateContext: NSManagedObjectContext =  {
+        let privateMOC = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        
+        return privateMOC
+    }()
+    
+    // The managed object model for the application. It is a fatal error for the application not to be able to find and load its model.
+    private lazy var managedObjectModel: NSManagedObjectModel = {
+        return NSManagedObjectModel(contentsOf: self.modelURL!)!
+    }()
+    
+    // This resource is the same name as your xcdatamodeld contained in your project.
+    let modelURL = Bundle.main.url(forResource: "Model", withExtension:"momd")
     
     static let shared: CoreDataStack = {
         let sharedCoreDataStack = CoreDataStack()
         return sharedCoreDataStack
     }()
     
-    
     init() {
         
-        // This resource is the same name as your xcdatamodeld contained in your project.
-        guard let modelURL = Bundle.main.url(forResource: "Model", withExtension:"momd") else {
-            fatalError("Error loading model from bundle")
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(contextDidSave(notification:)), name: NSNotification.Name.NSManagedObjectContextDidSave, object: nil)
         
-        
-        // The managed object model for the application. It is a fatal error for the application not to be able to find and load its model.
-        guard let managedObjectModel = NSManagedObjectModel(contentsOf: modelURL) else {
-            fatalError("Error initializing mom from: \(modelURL)")
-        }
-        
-        
-        let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
-        context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-        context.persistentStoreCoordinator = persistentStoreCoordinator
+        privateContext.parent = self.context
         
         DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
             let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -45,7 +55,7 @@ class CoreDataStack {
             let storeURL = docURL.appendingPathComponent("DataModel.sqlite")
             
             do {
-                try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: nil)
+                try self.persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: nil)
             }
                 
             catch {
@@ -54,10 +64,15 @@ class CoreDataStack {
         }
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     func save() {
-        if context.hasChanges {
+        if privateContext.hasChanges {
+            
             do {
-                try context.save()
+                try privateContext.save()
             } catch let error as NSError {
                 print("Oops there was an error \(error.localizedDescription)")
                 abort()
@@ -65,4 +80,25 @@ class CoreDataStack {
         }
     }
     
+    @objc fileprivate func contextDidSave(notification: Notification) {
+        if let sender = notification.object as? NSManagedObjectContext, sender != context {
+            context.mergeChanges(fromContextDidSave: notification)
+            if context.hasChanges {
+                do {
+                    try context.save()
+                } catch let error as NSError {
+                    print("\(error.localizedDescription)")
+                    abort()
+                }
+            }
+        }
+    }
+    
 }
+
+
+
+
+
+
+

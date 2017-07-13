@@ -10,6 +10,9 @@ import Foundation
 import XCTest
 
 class SpyGnomeListView: GnomeListViewModelDelegate {
+    
+    func shouldReloadTableView() {}
+    
     func beginUpdates() {}
 
     func endUpdates() {}

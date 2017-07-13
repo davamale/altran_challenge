@@ -94,30 +94,38 @@ class GnomeListViewModelTests: XCTestCase {
     }
     
     func testHandleFilterSelection() {
+
+        // given:
+        let noFriendsFilter = GnomeListViewModel.Filter.noFriends
+        
+        // when:
+        let predicate = viewModel.predicate(for: noFriendsFilter)
+        
+        // then:
+        XCTAssert(predicate != nil, "Predicate is not nil")
+        
+        XCTAssert(predicate!.predicateFormat == "hasFriends == 0", "hasFriends must be the proprty to be analyzed")
+        
+        // given:
+        let noProfessionsFilter = GnomeListViewModel.Filter.noProfession
+        
+        // when:
+        let npPredicate = viewModel.predicate(for: noProfessionsFilter)
+        
+        // then:
+        XCTAssert(npPredicate != nil, "Predicate is not nil")
+        
+        XCTAssert(npPredicate!.predicateFormat == "hasProfessions == 0", "hasProfessions must be the proprty to be analyzed")
         
         // given:
         let allFilter = GnomeListViewModel.Filter.all
         
         // when:
-        let filteredObject = viewModel.handleSelected(filter: allFilter)
+        let allPredicate = viewModel.predicate(for: allFilter)
         
         // then:
-        
-        
+        XCTAssert(allPredicate == nil, "Predicate is nil to fetch all objects")
     }
-    
-    // MARK: - Object at Index Test
-//    func testGnomeAtIndexPath() {
-//        
-//        // given:
-//        let gnomeArray = [ObjectHelper.gnomeJsonMock(name: "William Anderson"), ObjectHelper.gnomeJsonMock()]
-//        let indexPath = IndexPath(item: 1, section: 0)
-//        
-//        // when:
-//        let calculatedObject = viewModel.object(atIndexPath:indexPath)
-//        
-//        XCTAssert(gnomeArray[indexPath.row] == calculatedObject)
-//    }
     
 }
 

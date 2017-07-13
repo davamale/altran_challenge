@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import STXImageCache
 
 class GnomeCell: UITableViewCell {
 
@@ -38,11 +39,16 @@ extension GnomeCell: CellProtocol {
         
         // image
         if let pictureUrl = gnome.pictureUrl {
-            gnomeImageView.loadImage(from: pictureUrl)
+            
+            //FIXME: uncomment this line to use my implementation. It's buggy.
+//            gnomeImageView.loadImage(from: pictureUrl)
+            
+            // library implementation
+            gnomeImageView.stx.image(atURL: URL(string: pictureUrl)!)
         }
         
         // professions label
-        gnomeProfessionLabel.textColor = gnome.professionCount > 0 ? .defaultBlue : .defaultRed
+        gnomeProfessionLabel.textColor = gnome.hasProfessions ? .defaultBlue : .defaultRed
         gnomeProfessionLabel.text = "\(gnome.professionCount)"
         
         return self

@@ -15,14 +15,6 @@ extension Gnome: ManagedObjectType {
     public static var defaultSortDescriptors: [NSSortDescriptor] {
         return [NSSortDescriptor(key: "name", ascending: true)]
     }
-    
-//    public static var sortedFetchRequest: NSFetchRequest<NSFetchRequestResult> {
-//        let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
-//        request.sortDescriptors = defaultSortDescriptors
-//        request.fetchLimit = 100
-//        
-//        return request
-//    }
 }
 
 //MARK: - ManagedObjectMethods
@@ -44,13 +36,12 @@ extension Gnome: ManagedObjectMethods {
             fetchedGnome = gnome
         }
         
-        let gnome: Gnome = fetchedGnome ?? CoreDataStack.shared.context.insertObject()
+        let gnome: Gnome = fetchedGnome ?? CoreDataStack.shared.privateContext.insertObject()
         
         // only update if is different
         if gnome.name != name {
             gnome.name = name
         }
-        
         
         if let id = object["id"] as? Int, gnome.id != Int64(id) {
             gnome.id = Int64(id)
@@ -82,25 +73,26 @@ extension Gnome: ManagedObjectMethods {
         }
         
         // relations
-        if let friends = object["friends"] as? [String], gnome.friends?.count != friends.count {
+        if let friends = object["friends"] as? [String], friends.count > 0  {
             
-            // set has friends as rue
+            // set has friends as true
             gnome.hasFriends = true
             
             for friend in friends {
                 
                 // creates a new Gnome
                 if let gnomeFriend = save(object: NSDictionary(object: friend, forKey: "name" as NSCopying)) {
-//                    gnomeFriend.addToFriends(gnome)
                     gnome.addToFriends(gnomeFriend)
                 }
             }
+            
         }
         
-        if let professions = object["professions"] as? [String] {
+        if let professions = object["professions"] as? [String], professions.count > 0 {
             
             // set profession count
             gnome.professionCount = Int16(professions.count)
+            gnome.hasProfessions = true
             
             for profession in professions where !profession.isEmpty {
                 
@@ -109,39 +101,14 @@ extension Gnome: ManagedObjectMethods {
                     professionObject.addToGnomes(gnome)
                 }
             }
+            
         }
+        
+        gnome.hasFriends = gnome.friends != nil ? gnome.friends!.count > 0 : false
+        gnome.hasProfessions = gnome.professions != nil ? gnome.professions!.count > 0 : false
 
         return gnome
     }
-    
-//    private func addFriendRelation(friendName name: String?) {
-//        
-//        guard let name = name, !name.isEmpty else {
-//            return
-//        }
-//        
-//        var fetchedGnome: Gnome?
-//        
-//        //TODO: Validate if name already exists
-//        if let gnome = Gnome.fetch(uniqueValue: name, forKey: "name") as? Gnome {
-//            fetchedGnome = gnome
-//        }
-//        
-//        let gnome: Gnome = fetchedGnome ?? CoreDataStack.shared.context.insertObject()
-//        
-//        // only update if is different
-//        if gnome.name != name {
-//            gnome.name = name
-//        }
-//        
-//        // add friend to gnome (self object)
-//        self.addToFriends(gnome)
-//        
-//        // add self as friend to friend (new created or fetched object).
-//        gnome.addToFriends(self)
-//        
-//    }
-    
 }
 
 

@@ -8,6 +8,20 @@
 
 import Foundation
 
-class MockGnome: Gnome {
+class MockGnome {
+    
+    var name: String!
+    var hasFriends: Bool
+    var professionsCount: Int16
+    
+    init(name: String, hasFriends: Bool, professionsCount: Int16) {
+        self.name = name
+        self.hasFriends = hasFriends
+        self.professionsCount = professionsCount
+    }
+}
+
+// MARK: - Helper
+extension MockGnome {
     
 }

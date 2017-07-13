@@ -10,6 +10,18 @@ import Foundation
 
 struct ObjectHelper {
     
+    static var stubFetchedObjectsGreaterThanZero: [Int] {
+        return [1,2,3,4,5,6,6,7,8]
+    }
+    
+    static var stubFetchedObjectsEqualsToZero: [Int] {
+        return []
+    }
+    
+    static var stubFetchedObjectsNil: [Int]? {
+        return nil
+    }
+    
     // MARK: - GnomeListViewModelTests
     
     /// JSON Gnome Mock object
@@ -61,18 +73,21 @@ struct ObjectHelper {
         return object
     }
     
-    static var stubFetchedObjectsGreaterThanZero: [Int] {
-        return [1,2,3,4,5,6,6,7,8]
-    }
-    
-    static var stubFetchedObjectsEqualsToZero: [Int] {
-        return []
-    }
-    
-    static var stubFetchedObjectsNil: [Int]? {
-        return nil
+    /// Returns a random number between 0 and array.count. Used to evaluate arrays in during testing.
+    ///
+    /// - Parameter array: objects
+    /// - Returns: random generate number
+    static func randomNumber<T>(in array: Array<T>) -> Int {
+        return Int(arc4random_uniform(UInt32(array.count)))
     }
     
     // MARK: -
     
 }
+
+
+
+
+
+
+

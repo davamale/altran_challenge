@@ -8,9 +8,11 @@
 
 import Foundation
 import CoreData
-import AndroidDialogAlert
 
 protocol GnomeListViewModelDelegate: class {
+    
+    /// Notifies the view to reload the table view
+    func shouldReloadTableView()
     
     /// Notifies the view when the HTTP Get and save to core data has finished
     func didFinishLoading()
@@ -34,23 +36,39 @@ protocol GnomeListViewModelDelegate: class {
     ///   - indexPath: <#indexPath description#>
     func didUpdate(object:Gnome, at indexPath: IndexPath)
     
+    /// Notifies the view that NSFetchedResultsController will change
     func beginUpdates()
     
+    /// Notifies the view that NSFetchedResultsController did change
     func endUpdates()
 }
 
+// MARK: - Enums
 extension GnomeListViewModel {
+    
     enum Filter: Int {
         case all
         case noFriends
         case noProfession
+        
+        func filterKeyName() -> String {
+            switch self {
+                
+            case .all:
+                return ""
+                
+            case .noFriends:
+                return "hasFriends"
+                
+            case .noProfession:
+                return "hasProfessions"
+            }
+        }
     }
 }
 
 
 class GnomeListViewModel: NSObject {
-    
-    
     
     // MARK: - Properties
     fileprivate let delegate: GnomeListViewModelDelegate!
@@ -67,28 +85,22 @@ class GnomeListViewModel: NSObject {
         self.delegate = delegate
         super.init()
     }
-    
-    // MARK: - Public Methods
+}
+
+// MARK: - Public Methods
+extension GnomeListViewModel {
     
     /// Performs initial fetch. Should be called from ViewDidLoad method.
     func initialFetch() {
         
-        do {
-            try fetchedResultsController.performFetch()
-            print(fetchedResultsController.fetchedObjects ?? "Nothing")
-        } catch {
-            let fetchError = error as NSError
-            print(fetchError)
-            
-            delegate.showError(withMessage: fetchError.localizedDescription)
-        }
-        
+        fetch()
         getList()
     }
     
     
-    /// HTTP Get gnome info list
+    /// HTTP Get gnome info list.
     func getList() {
+        
         NetworkManager.get(url: URL(string: Constants.Routes.gnomeInfo)!) { (json, error) in
             
             // notify about the error on an alert only if there is no data being shown
@@ -132,7 +144,33 @@ class GnomeListViewModel: NSObject {
         return fetchedResultsController.object(at: indexPath) as? Gnome
     }
     
-    // MARK: - Private Methods
+    /// Filters fetchedResultsController based on the selected Filter
+    ///
+    /// - Parameter filter: filter to apply
+    func filter(using filter: Filter) {
+        fetchedResultsController.fetchRequest.predicate = predicate(for: filter)
+        fetch(forceReload: true)
+    }
+}
+
+// MARK: - Private Methods
+extension GnomeListViewModel {
+    
+    func fetch(forceReload: Bool? = nil) {
+        do {
+            try fetchedResultsController.performFetch()
+            
+            // reloads tableview
+            if let forceReload = forceReload, forceReload {
+                delegate.shouldReloadTableView()
+            }
+            
+        } catch {
+            let fetchError = error as NSError
+            
+            delegate.showError(withMessage: fetchError.localizedDescription)
+        }
+    }
     
     /// Evaluates if the objects array has objects
     ///
@@ -147,12 +185,26 @@ class GnomeListViewModel: NSObject {
     /// - Parameter gnomeList: JSONArray that represents Gnome list fetched
     func saveList(gnomeList: JSONArray) {
         
-        for gnome in gnomeList {
-            let _ = Gnome.save(object: gnome)
+        DispatchQueue.global(qos: .utility).async {
+            
+            for gnome in gnomeList {
+                let _ = Gnome.save(object: gnome)
+            }
+            
             CoreDataStack.shared.save()
+            
+            DispatchQueue.main.async {
+                self.delegate.didFinishLoading()
+            }
         }
-        
-        delegate.didFinishLoading()
+    }
+    
+    /// Generates de NSPredicate to filter the NSFetchedResultsController. In case filter is All, returns nil.
+    ///
+    /// - Parameter filter: filter to be applied
+    /// - Returns: NSPredicate
+    func predicate(for filter: Filter) -> NSPredicate? {
+        return filter == .all ? nil : NSPredicate(format: "%K = false", filter.filterKeyName())
     }
 }
 

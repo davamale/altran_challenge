@@ -1,5 +1,5 @@
 //
-//  UIImageView+Networking.swift
+//  UIImageView+NetworkManager.swift
 //  altran_challenge
 //
 //  Created by Dava on 7/11/17.
@@ -10,11 +10,19 @@ import UIKit
 
 extension UIImageView {
     
-    func loadImage(from urlString: String) {
+    /// Loads images asyncronously.
+    ///
+    /// - Parameters:
+    ///   - urlString: url to download the image
+    ///   - completion: optional UIImage
+    func loadImage(from urlString: String, with completion:((UIImage?) -> ())? = nil) {
         
         if let cachedImage = NetworkManager.shared.cacheImage(for: urlString as AnyObject) {
             DispatchQueue.main.async {
-                return self.image = cachedImage
+                self.image = cachedImage
+                if let completion = completion {
+                    return completion(cachedImage)
+                }
             }
         }
         
@@ -30,7 +38,9 @@ extension UIImageView {
             }
             
             self.image = image
-            self.setNeedsDisplay()
+            if let completion = completion {
+                return completion(image)
+            }
         }
         
     }

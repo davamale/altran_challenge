@@ -36,7 +36,10 @@ class NetworkManager {
     init() {
         self.cache = NSCache()
     }
-    
+}
+
+// MARK: - Class Methods
+extension NetworkManager {
     // MARK: - Class Method
     
     /// Performs an HTTP GET
@@ -69,7 +72,10 @@ class NetworkManager {
         
         task.resume()
     }
-    
+}
+
+// MARK: - Instance Methods
+extension NetworkManager {
     // MARK: - instance Method
     
     /// Loads image from given url. Verifies if there exist an image for the url, if not, downloads the image and cache it.
@@ -95,15 +101,16 @@ class NetworkManager {
             do {
                 let data = try Data(contentsOf: url)
                 
-                guard let image = UIImage(data: data) else {
+                // generate and compress image
+                guard let image = UIImage(data: data), let thumbnailData = UIImageJPEGRepresentation(image, 0), let thumbnail = UIImage(data: thumbnailData)  else {
                     return completion(nil, NetworkError.responseError("Image Data Corrupted"))
                 }
                 
-                // cache object
-                self.cache.setObject(image, forKey: imageUrl.absoluteString as AnyObject)
+                // cache image
+                self.cache.setObject(thumbnail, forKey: imageUrl.absoluteString as AnyObject)
                 
                 DispatchQueue.main.async {
-                    return completion(image, nil)
+                    return completion(thumbnail, nil)
                 }
                 
             } catch {
@@ -121,7 +128,6 @@ class NetworkManager {
         return self.cache.object(forKey: key) as? UIImage
     }
 }
-
 
 
 

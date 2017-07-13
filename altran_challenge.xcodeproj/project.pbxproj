@@ -16,6 +16,10 @@
 		5713A64D1F12C9A30096F0FE /* GnomeListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713A64C1F12C9A30096F0FE /* GnomeListViewModelTests.swift */; };
 		5713A6501F12CB290096F0FE /* NSManagedObjectContext+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713A64F1F12CB290096F0FE /* NSManagedObjectContext+Default.swift */; };
 		5713A6511F12CB290096F0FE /* NSManagedObjectContext+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713A64F1F12CB290096F0FE /* NSManagedObjectContext+Default.swift */; };
+		57236EE21F172C4C0067B4E8 /* GnomeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57236EE11F172C4C0067B4E8 /* GnomeDetailViewController.swift */; };
+		57236EE31F172C4C0067B4E8 /* GnomeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57236EE11F172C4C0067B4E8 /* GnomeDetailViewController.swift */; };
+		57236EE51F172C5E0067B4E8 /* GnomeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57236EE41F172C5E0067B4E8 /* GnomeDetailViewModel.swift */; };
+		57236EE61F172C5E0067B4E8 /* GnomeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57236EE41F172C5E0067B4E8 /* GnomeDetailViewModel.swift */; };
 		5733FFF11F14873F002573F0 /* GnomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5733FFEF1F14873F002573F0 /* GnomeCell.swift */; };
 		5733FFF31F14873F002573F0 /* GnomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5733FFF01F14873F002573F0 /* GnomeCell.xib */; };
 		5733FFF41F14873F002573F0 /* GnomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5733FFF01F14873F002573F0 /* GnomeCell.xib */; };
@@ -40,7 +44,7 @@
 		5748CBFF1F13FC2300FDC175 /* Profession+Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E050141F13283E002008AC /* Profession+Methods.swift */; };
 		5748CC021F1469A400FDC175 /* SpyGnomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748CC011F1469A400FDC175 /* SpyGnomeListView.swift */; };
 		57DA986A1F100154004FCACD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98691F100154004FCACD /* AppDelegate.swift */; };
-		57DA986C1F100154004FCACD /* GnomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA986B1F100154004FCACD /* GnomeListView.swift */; };
+		57DA986C1F100154004FCACD /* GnomeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA986B1F100154004FCACD /* GnomeListViewController.swift */; };
 		57DA986F1F100154004FCACD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57DA986D1F100154004FCACD /* Main.storyboard */; };
 		57DA98711F100154004FCACD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57DA98701F100154004FCACD /* Assets.xcassets */; };
 		57DA98741F100154004FCACD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57DA98721F100154004FCACD /* LaunchScreen.storyboard */; };
@@ -55,10 +59,9 @@
 		57E6A3F11F156D3B002F33D6 /* MockCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6A3F01F156D3B002F33D6 /* MockCoreDataStack.swift */; };
 		57E6A3F31F156DBF002F33D6 /* MockGnome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6A3F21F156DBF002F33D6 /* MockGnome.swift */; };
 		57E6A4011F157BC3002F33D6 /* UINavigationController+ExtendedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6A4001F157BC3002F33D6 /* UINavigationController+ExtendedView.swift */; };
-		57E6A4031F15A2CC002F33D6 /* UIImageView+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6A4021F15A2CC002F33D6 /* UIImageView+Networking.swift */; };
-		57E6A4041F15C202002F33D6 /* GnomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5733FFEF1F14873F002573F0 /* GnomeCell.swift */; };
+		57E6A4031F15A2CC002F33D6 /* UIImageView+NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6A4021F15A2CC002F33D6 /* UIImageView+NetworkManager.swift */; };
 		57E6A4051F15C28C002F33D6 /* UIImage+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6A3EE1F155AE3002F33D6 /* UIImage+Default.swift */; };
-		57E6A4061F15C28C002F33D6 /* UIImageView+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6A4021F15A2CC002F33D6 /* UIImageView+Networking.swift */; };
+		57E6A4061F15C28C002F33D6 /* UIImageView+NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6A4021F15A2CC002F33D6 /* UIImageView+NetworkManager.swift */; };
 		7E4F7DAC5659EE4F40DA1CCA /* Pods_altran_challengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32C88D6B07C6CA62F65B23FF /* Pods_altran_challengeTests.framework */; };
 		CE79D53B5A625DA7ABC0D023 /* Pods_altran_challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 688EAEAEFF4C76E46F171DE3 /* Pods_altran_challenge.framework */; };
 /* End PBXBuildFile section */
@@ -83,6 +86,8 @@
 		5713A64A1F12AF060096F0FE /* GnomeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GnomeTests.swift; sourceTree = "<group>"; };
 		5713A64C1F12C9A30096F0FE /* GnomeListViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GnomeListViewModelTests.swift; sourceTree = "<group>"; };
 		5713A64F1F12CB290096F0FE /* NSManagedObjectContext+Default.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Default.swift"; sourceTree = "<group>"; };
+		57236EE11F172C4C0067B4E8 /* GnomeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GnomeDetailViewController.swift; sourceTree = "<group>"; };
+		57236EE41F172C5E0067B4E8 /* GnomeDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GnomeDetailViewModel.swift; sourceTree = "<group>"; };
 		5733FFEF1F14873F002573F0 /* GnomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GnomeCell.swift; sourceTree = "<group>"; };
 		5733FFF01F14873F002573F0 /* GnomeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GnomeCell.xib; sourceTree = "<group>"; };
 		573598FD1F1004B900821FFA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -98,7 +103,7 @@
 		5748CC011F1469A400FDC175 /* SpyGnomeListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpyGnomeListView.swift; sourceTree = "<group>"; };
 		57DA98661F100154004FCACD /* altran_challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = altran_challenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57DA98691F100154004FCACD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		57DA986B1F100154004FCACD /* GnomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GnomeListView.swift; sourceTree = "<group>"; };
+		57DA986B1F100154004FCACD /* GnomeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GnomeListViewController.swift; sourceTree = "<group>"; };
 		57DA986E1F100154004FCACD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		57DA98701F100154004FCACD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57DA98731F100154004FCACD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -117,7 +122,7 @@
 		57E6A3F41F1573FB002F33D6 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = "../../Library/Developer/Xcode/DerivedData/altran_challenge-fgzhmbihlyrobuejmwfqigtpkwtb/Build/Products/Debug-iphonesimulator/AlamofireImage/AlamofireImage.framework"; sourceTree = "<group>"; };
 		57E6A3F61F15740F002F33D6 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../Library/Developer/Xcode/DerivedData/altran_challenge-fgzhmbihlyrobuejmwfqigtpkwtb/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		57E6A4001F157BC3002F33D6 /* UINavigationController+ExtendedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+ExtendedView.swift"; sourceTree = "<group>"; };
-		57E6A4021F15A2CC002F33D6 /* UIImageView+Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Networking.swift"; sourceTree = "<group>"; };
+		57E6A4021F15A2CC002F33D6 /* UIImageView+NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+NetworkManager.swift"; sourceTree = "<group>"; };
 		688EAEAEFF4C76E46F171DE3 /* Pods_altran_challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_altran_challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEB8891DCCE4ADF0EB817A98 /* Pods-altran_challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-altran_challenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-altran_challenge/Pods-altran_challenge.release.xcconfig"; sourceTree = "<group>"; };
 		F4E1E826A027B55B33330A61 /* Pods-altran_challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-altran_challenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-altran_challenge/Pods-altran_challenge.debug.xcconfig"; sourceTree = "<group>"; };
@@ -167,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				5735990F1F1007B700821FFA /* GnomeListViewModel.swift */,
+				57236EE41F172C5E0067B4E8 /* GnomeDetailViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -184,7 +190,8 @@
 		573598F61F10040F00821FFA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				57DA986B1F100154004FCACD /* GnomeListView.swift */,
+				57236EE11F172C4C0067B4E8 /* GnomeDetailViewController.swift */,
+				57DA986B1F100154004FCACD /* GnomeListViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -192,11 +199,11 @@
 		573598F71F10041700821FFA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				573599181F1008B900821FFA /* UIColor+Default.swift */,
 				5713A64F1F12CB290096F0FE /* NSManagedObjectContext+Default.swift */,
+				573599181F1008B900821FFA /* UIColor+Default.swift */,
 				57E6A3EE1F155AE3002F33D6 /* UIImage+Default.swift */,
+				57E6A4021F15A2CC002F33D6 /* UIImageView+NetworkManager.swift */,
 				57E6A4001F157BC3002F33D6 /* UINavigationController+ExtendedView.swift */,
-				57E6A4021F15A2CC002F33D6 /* UIImageView+Networking.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -549,14 +556,16 @@
 			files = (
 				5713A6501F12CB290096F0FE /* NSManagedObjectContext+Default.swift in Sources */,
 				573599141F10086E00821FFA /* Customizable.swift in Sources */,
+				57236EE21F172C4C0067B4E8 /* GnomeDetailViewController.swift in Sources */,
 				57E050151F13283E002008AC /* Profession+Methods.swift in Sources */,
-				57E6A4031F15A2CC002F33D6 /* UIImageView+Networking.swift in Sources */,
+				57236EE51F172C5E0067B4E8 /* GnomeDetailViewModel.swift in Sources */,
+				57E6A4031F15A2CC002F33D6 /* UIImageView+NetworkManager.swift in Sources */,
 				57E6A4011F157BC3002F33D6 /* UINavigationController+ExtendedView.swift in Sources */,
 				5713A6431F12A4C90096F0FE /* Generator.swift in Sources */,
 				57E6A3EF1F155AE3002F33D6 /* UIImage+Default.swift in Sources */,
 				5733FFF11F14873F002573F0 /* GnomeCell.swift in Sources */,
 				57E6A3E61F154134002F33D6 /* CellProtocol.swift in Sources */,
-				57DA986C1F100154004FCACD /* GnomeListView.swift in Sources */,
+				57DA986C1F100154004FCACD /* GnomeListViewController.swift in Sources */,
 				57DA986A1F100154004FCACD /* AppDelegate.swift in Sources */,
 				5735990A1F1005D100821FFA /* NetworkManager.swift in Sources */,
 				573599191F1008B900821FFA /* UIColor+Default.swift in Sources */,
@@ -574,10 +583,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				57E6A4051F15C28C002F33D6 /* UIImage+Default.swift in Sources */,
-				57E6A4061F15C28C002F33D6 /* UIImageView+Networking.swift in Sources */,
-				57E6A4041F15C202002F33D6 /* GnomeCell.swift in Sources */,
+				57E6A4061F15C28C002F33D6 /* UIImageView+NetworkManager.swift in Sources */,
 				57E6A3E71F1542AE002F33D6 /* CellProtocol.swift in Sources */,
 				5748CBFF1F13FC2300FDC175 /* Profession+Methods.swift in Sources */,
+				57236EE31F172C4C0067B4E8 /* GnomeDetailViewController.swift in Sources */,
 				5713A64B1F12AF060096F0FE /* GnomeTests.swift in Sources */,
 				5735990E1F10073B00821FFA /* Constants.swift in Sources */,
 				5713A64D1F12C9A30096F0FE /* GnomeListViewModelTests.swift in Sources */,
@@ -586,6 +595,7 @@
 				573599091F1005D100821FFA /* CoreDataStack.swift in Sources */,
 				5713A6461F12A73C0096F0FE /* GeneratorTests.swift in Sources */,
 				5735991A1F1008B900821FFA /* UIColor+Default.swift in Sources */,
+				57236EE61F172C5E0067B4E8 /* GnomeDetailViewModel.swift in Sources */,
 				57E6A3F31F156DBF002F33D6 /* MockGnome.swift in Sources */,
 				573599111F1007B700821FFA /* GnomeListViewModel.swift in Sources */,
 				5713A6441F12A4C90096F0FE /* Generator.swift in Sources */,

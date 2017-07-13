@@ -33,7 +33,7 @@ extension Profession: ManagedObjectMethods {
             fetchedProfession = profession
         }
         
-        let profession: Profession = fetchedProfession ?? CoreDataStack.shared.context.insertObject()
+        let profession: Profession = fetchedProfession ?? CoreDataStack.shared.privateContext.insertObject()
         
         profession.id = Generator.newId
         profession.name = professionName

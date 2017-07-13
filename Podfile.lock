@@ -1,12 +1,15 @@
 PODS:
   - AndroidDialogAlert (0.2.1)
+  - STXImageCache (1.0.2)
 
 DEPENDENCIES:
   - AndroidDialogAlert
+  - STXImageCache
 
 SPEC CHECKSUMS:
   AndroidDialogAlert: 4f2b2b585a15430608b6cd0062495548baaa990d
+  STXImageCache: d41f98b0d35426f1dd94f5ae80f7437027da64d1
 
-PODFILE CHECKSUM: 8b42af0fab8db33e7eeec3576e88db63166390f1
+PODFILE CHECKSUM: 96fe074c8dd21c23eccbb7fc59fe2545f46d2dfa
 
 COCOAPODS: 1.2.0

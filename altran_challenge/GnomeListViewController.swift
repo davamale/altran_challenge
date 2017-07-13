@@ -10,7 +10,7 @@ import UIKit
 import AndroidDialogAlert
 
 // MARK: - Constants
-fileprivate extension GnomeListView {
+fileprivate extension GnomeListViewController {
     
     struct Constants {
         /// Constants related do filterControl
@@ -29,7 +29,7 @@ fileprivate extension GnomeListView {
     }
 }
 
-class GnomeListView: UIViewController {
+class GnomeListViewController: UIViewController {
     
     //MARK: - Properties
     fileprivate lazy var tableView: UITableView = {
@@ -69,15 +69,20 @@ class GnomeListView: UIViewController {
         viewModel.initialFetch()
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        print("Memory warning!")
+    }
+    
     //MARK: Actions
     @objc func filterControlSelection(sender: UISegmentedControl) {
-        
+        viewModel.filter(using: GnomeListViewModel.Filter(rawValue: sender.selectedSegmentIndex)!)
     }
     
 }
 
 //MARK: - UITableView DataSource
-extension GnomeListView: UITableViewDataSource {
+extension GnomeListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.numberOfSections()
     }
@@ -89,20 +94,29 @@ extension GnomeListView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: GnomeCell.identifier, for: indexPath) as! GnomeCell
-        
         return cell.configure(withEntity: viewModel.object(atIndexPath: indexPath))
     }
 }
 
 //MARK: - UITableView Delegate
-extension GnomeListView: UITableViewDelegate {
+extension GnomeListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 72
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        print(viewModel.object(atIndexPath: indexPath)!)
     }
 }
 
 //MARK: - GnomeListViewModel Delegate
-extension GnomeListView: GnomeListViewModelDelegate {
+extension GnomeListViewController: GnomeListViewModelDelegate {
+    
+    func shouldReloadTableView() {
+        tableView.reloadData()
+    }
     
     func showError(withMessage message: String) {
         
@@ -119,7 +133,6 @@ extension GnomeListView: GnomeListViewModelDelegate {
     
     func didFinishLoading() {
         //TODO: Hide loading
-//        tableView.reloadData()
     }
     
     func didInsert(newObject: Gnome, at newIndexPath: IndexPath) {
@@ -139,7 +152,8 @@ extension GnomeListView: GnomeListViewModelDelegate {
     }
 }
 
-extension GnomeListView: Customizable {
+// MARK: - Customizable
+extension GnomeListViewController: Customizable {
     
     func prepareUI() {
         
