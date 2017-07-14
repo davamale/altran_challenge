@@ -10,6 +10,9 @@ import UIKit
 
 extension UILabel {
     
+    /// Create a UILabel instance with the style used in detail view controller
+    ///
+    /// - Returns: UILabel instance with style
     static func detailLabel() -> UILabel {
         let label = UILabel()
         

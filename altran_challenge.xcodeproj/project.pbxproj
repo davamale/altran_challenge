@@ -39,9 +39,8 @@
 		573599171F10086E00821FFA /* CoreDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573599131F10086E00821FFA /* CoreDataProtocol.swift */; };
 		573599191F1008B900821FFA /* UIColor+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573599181F1008B900821FFA /* UIColor+Default.swift */; };
 		5735991A1F1008B900821FFA /* UIColor+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573599181F1008B900821FFA /* UIColor+Default.swift */; };
-		5742ADF61F13DEE1009E48B1 /* ProfessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5742ADF51F13DEE1009E48B1 /* ProfessionTests.swift */; };
 		5748CBFF1F13FC2300FDC175 /* Profession+Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E050141F13283E002008AC /* Profession+Methods.swift */; };
-		5748CC021F1469A400FDC175 /* SpyGnomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748CC011F1469A400FDC175 /* SpyGnomeListView.swift */; };
+		5748CC021F1469A400FDC175 /* SpyGnomeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748CC011F1469A400FDC175 /* SpyGnomeListViewController.swift */; };
 		57D3CB651F18195000108411 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D3CB641F18195000108411 /* ViewModel.swift */; };
 		57D3CB661F18219600108411 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D3CB641F18195000108411 /* ViewModel.swift */; };
 		57D3CB6A1F18349800108411 /* String+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D3CB691F18349800108411 /* String+Color.swift */; };
@@ -49,6 +48,8 @@
 		57D3CB6D1F186BA300108411 /* UILabel+Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D3CB6C1F186BA300108411 /* UILabel+Detail.swift */; };
 		57D3CB6E1F186BA300108411 /* UILabel+Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D3CB6C1F186BA300108411 /* UILabel+Detail.swift */; };
 		57D3CB701F186F3100108411 /* ColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D3CB6F1F186F3100108411 /* ColorTests.swift */; };
+		57D3CB721F19557500108411 /* GnomeDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D3CB711F19557500108411 /* GnomeDetailViewModelTests.swift */; };
+		57D3CB741F19570100108411 /* SpyGnomeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D3CB731F19570100108411 /* SpyGnomeDetailViewController.swift */; };
 		57DA986A1F100154004FCACD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98691F100154004FCACD /* AppDelegate.swift */; };
 		57DA986C1F100154004FCACD /* GnomeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA986B1F100154004FCACD /* GnomeListViewController.swift */; };
 		57DA986F1F100154004FCACD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57DA986D1F100154004FCACD /* Main.storyboard */; };
@@ -105,12 +106,13 @@
 		573599121F10086E00821FFA /* Customizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customizable.swift; sourceTree = "<group>"; };
 		573599131F10086E00821FFA /* CoreDataProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataProtocol.swift; sourceTree = "<group>"; };
 		573599181F1008B900821FFA /* UIColor+Default.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Default.swift"; sourceTree = "<group>"; };
-		5742ADF51F13DEE1009E48B1 /* ProfessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfessionTests.swift; sourceTree = "<group>"; };
-		5748CC011F1469A400FDC175 /* SpyGnomeListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpyGnomeListView.swift; sourceTree = "<group>"; };
+		5748CC011F1469A400FDC175 /* SpyGnomeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpyGnomeListViewController.swift; sourceTree = "<group>"; };
 		57D3CB641F18195000108411 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		57D3CB691F18349800108411 /* String+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Color.swift"; sourceTree = "<group>"; };
 		57D3CB6C1F186BA300108411 /* UILabel+Detail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Detail.swift"; sourceTree = "<group>"; };
 		57D3CB6F1F186F3100108411 /* ColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
+		57D3CB711F19557500108411 /* GnomeDetailViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GnomeDetailViewModelTests.swift; sourceTree = "<group>"; };
+		57D3CB731F19570100108411 /* SpyGnomeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpyGnomeDetailViewController.swift; sourceTree = "<group>"; };
 		57DA98661F100154004FCACD /* altran_challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = altran_challenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57DA98691F100154004FCACD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57DA986B1F100154004FCACD /* GnomeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GnomeListViewController.swift; sourceTree = "<group>"; };
@@ -262,7 +264,8 @@
 		5748CC001F14697E00FDC175 /* Spy */ = {
 			isa = PBXGroup;
 			children = (
-				5748CC011F1469A400FDC175 /* SpyGnomeListView.swift */,
+				5748CC011F1469A400FDC175 /* SpyGnomeListViewController.swift */,
+				57D3CB731F19570100108411 /* SpyGnomeDetailViewController.swift */,
 			);
 			name = Spy;
 			sourceTree = "<group>";
@@ -324,9 +327,9 @@
 				5713A6451F12A73C0096F0FE /* GeneratorTests.swift */,
 				5713A64A1F12AF060096F0FE /* GnomeTests.swift */,
 				5713A64C1F12C9A30096F0FE /* GnomeListViewModelTests.swift */,
-				5742ADF51F13DEE1009E48B1 /* ProfessionTests.swift */,
 				57E6A3E81F1542D9002F33D6 /* CellProtocolTests.swift */,
 				57D3CB6F1F186F3100108411 /* ColorTests.swift */,
+				57D3CB711F19557500108411 /* GnomeDetailViewModelTests.swift */,
 			);
 			path = altran_challengeTests;
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57D3CB721F19557500108411 /* GnomeDetailViewModelTests.swift in Sources */,
 				57D3CB661F18219600108411 /* ViewModel.swift in Sources */,
 				57E6A4051F15C28C002F33D6 /* UIImage+Default.swift in Sources */,
 				57E6A4061F15C28C002F33D6 /* UIImageView+NetworkManager.swift in Sources */,
@@ -620,8 +624,8 @@
 				573599151F10086E00821FFA /* Customizable.swift in Sources */,
 				57D3CB6B1F18349800108411 /* String+Color.swift in Sources */,
 				57E6A3E91F1542D9002F33D6 /* CellProtocolTests.swift in Sources */,
-				5748CC021F1469A400FDC175 /* SpyGnomeListView.swift in Sources */,
-				5742ADF61F13DEE1009E48B1 /* ProfessionTests.swift in Sources */,
+				5748CC021F1469A400FDC175 /* SpyGnomeListViewController.swift in Sources */,
+				57D3CB741F19570100108411 /* SpyGnomeDetailViewController.swift in Sources */,
 				57E6A3EC1F15462D002F33D6 /* MockTableViewCell.swift in Sources */,
 				57D3CB6E1F186BA300108411 /* UILabel+Detail.swift in Sources */,
 				573599171F10086E00821FFA /* CoreDataProtocol.swift in Sources */,

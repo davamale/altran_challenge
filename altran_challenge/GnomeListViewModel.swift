@@ -14,26 +14,29 @@ protocol GnomeListViewModelDelegate: class {
     /// Notifies the view to reload the table view
     func shouldReloadTableView()
     
+    /// Notifies the view when there is no data to show on the table view
+    func showEmtpyListView()
+    
     /// Notifies the view when the HTTP Get and save to core data has finished
     func didFinishLoading()
     
-    /// <#Description#>
+    /// Notifies the view to show an error
     ///
-    /// - Parameter message: <#message description#>
+    /// - Parameter message: error message to present
     func showError(withMessage message: String)
     
-    /// <#Description#>
+    /// Notifies the view that a new object has been inserted in the fetchedResultsController
     ///
     /// - Parameters:
-    ///   - newObject: <#newObject description#>
-    ///   - newIndexPath: <#newIndexPath description#>
+    ///   - newObject: object inserted
+    ///   - newIndexPath: at indexpath that was inserted
     func didInsert(newObject:Gnome, at newIndexPath: IndexPath)
     
-    /// <#Description#>
+    /// Notifies the view that an object inside the fetchedResultsController has been updated
     ///
     /// - Parameters:
-    ///   - object: <#object description#>
-    ///   - indexPath: <#indexPath description#>
+    ///   - object: updated object
+    ///   - indexPath: at indexpath
     func didUpdate(object:Gnome, at indexPath: IndexPath)
     
     /// Notifies the view that NSFetchedResultsController will change
@@ -41,30 +44,6 @@ protocol GnomeListViewModelDelegate: class {
     
     /// Notifies the view that NSFetchedResultsController did change
     func endUpdates()
-}
-
-// MARK: - Enums
-extension GnomeListViewModel {
-    
-    enum Filter: Int {
-        case all
-        case noFriends
-        case noProfession
-        
-        func filterKeyName() -> String {
-            switch self {
-                
-            case .all:
-                return ""
-                
-            case .noFriends:
-                return "hasFriends"
-                
-            case .noProfession:
-                return "hasProfessions"
-            }
-        }
-    }
 }
 
 class GnomeListViewModel: NSObject {
@@ -108,12 +87,16 @@ extension GnomeListViewModel {
     /// HTTP Get gnome info list.
     func getList() {
         
+        let hasLoadedObjects = hasObjects(in: fetchedResultsController.fetchedObjects)
+        
+        if (!hasLoadedObjects) {
+            delegate.showEmtpyListView()
+        }
+        
         NetworkManager.get(url: URL(string: Constants.Routes.gnomeInfo)!) { (json, error) in
             
-            self.delegate.didFinishLoading()
-            
             // notify about the error on an alert only if there is no data being shown
-            if let error = error, self.hasObjects(in: self.fetchedResultsController.fetchedObjects) {
+            if let error = error, hasLoadedObjects {
                 return self.delegate.showError(withMessage: error.localizedDescription)
             }
             
@@ -128,7 +111,7 @@ extension GnomeListViewModel {
     /// Filters fetchedResultsController based on the selected Filter
     ///
     /// - Parameter filter: filter to apply
-    func filter(using filter: Filter) {
+    func filter(using filter: Constants.Filter) {
         fetchedResultsController.fetchRequest.predicate = predicate(for: filter)
         fetch(forceReload: true)
     }
@@ -138,12 +121,15 @@ extension GnomeListViewModel {
 extension GnomeListViewModel {
     
     func fetch(forceReload: Bool? = nil) {
+        
         do {
             try fetchedResultsController.performFetch()
             
             // reloads tableview
             if let forceReload = forceReload, forceReload {
-                delegate.shouldReloadTableView()
+                DispatchQueue.main.async{
+                    self.delegate.shouldReloadTableView()
+                }
             }
             
         } catch {
@@ -174,9 +160,7 @@ extension GnomeListViewModel {
             
             CoreDataStack.shared.save()
             
-            DispatchQueue.main.async {
-                self.delegate.didFinishLoading()
-            }
+            self.delegate.didFinishLoading()
         }
     }
     
@@ -184,7 +168,7 @@ extension GnomeListViewModel {
     ///
     /// - Parameter filter: filter to be applied
     /// - Returns: NSPredicate
-    func predicate(for filter: Filter) -> NSPredicate? {
+    func predicate(for filter: Constants.Filter) -> NSPredicate? {
         return filter == .all ? nil : NSPredicate(format: "%K = false", filter.filterKeyName())
     }
 }

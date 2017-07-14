@@ -47,34 +47,77 @@ extension GnomeDetailViewModel {
         return gnome
     }
     
-    func professionsName() -> [String]? {
-        return gnome != nil ? gnome!.professions?.allObjects as? [String] : nil
-    }
-    
-    func friends() -> [Gnome]? {
-        return gnome != nil ? gnome!.friends?.allObjects as? [Gnome] : nil
-    }
-    
-    func title(for section: Int) -> String {
-        return section == 0 ? "Professions" : "Friends"
+    func title(for section: Int) -> String? {
+        
+        // converts section value to Section enum
+        guard let section = sectionValue(for: section) else {
+            return nil
+        }
+        
+        switch section {
+        case .profession:
+            
+            guard let professions = professions() else {
+                return nil
+            }
+            return professions.count > 0 ? "Professions" : nil
+            
+        case .friend:
+            guard let friends = friends() else {
+                return nil
+            }
+            return friends.count > 0 ? "Friends" : nil
+        }
     }
     
 }
 
 // MARK: - Private Methods
-fileprivate extension GnomeDetailViewModel {
+extension GnomeDetailViewModel {
     
-    //TODO: Calculate sections
+    func professions() -> [Profession]? {
+        return gnome != nil ? gnome!.professions?.allObjects as? [Profession] : nil
+    }
     
+    func friends() -> [Gnome]? {
+        return gnome != nil ? gnome!.friends?.allObjects as? [Gnome] : nil
+    }
+
+    /// Converts from section int to TableView.Section enum
+    ///
+    /// - Parameter section: section to evaluate
+    /// - Returns: TableView.Section or nil
+    func sectionValue(for section: Int) -> Constants.DetailTableView.Section? {
+        guard let section = Constants.DetailTableView.Section(rawValue: section) else {
+            return nil
+        }
+        
+        return section
+    }
+    
+    /// Validates if the given section has objects to show
+    ///
+    /// - Parameter section: section to validate
+    /// - Returns: Bool indicating if it has or not
+    func hasObjects(inSection section: Int) -> Bool {
+        
+        guard let section = sectionValue(for: section) else {
+            return false
+        }
+        
+        switch section {
+        case .profession:
+            return professions() != nil ? professions()!.count > 0 : false
+            
+        case .friend:
+            return friends() != nil ? friends()!.count > 0 : false
+        }
+    }
 }
 
 // MARK: - ViewModelTableView Provider
 extension GnomeDetailViewModel: ViewModelTableViewProvider {
-    typealias Entity = Gnome
-    
-    var datasource: [Gnome]? {
-        return gnome != nil ? gnome!.friends?.allObjects as? [Gnome] : nil
-    }
+    typealias Entity = ManagedObjectType
     
     func numberOfSections() -> Int {
         return 2
@@ -94,7 +137,18 @@ extension GnomeDetailViewModel: ViewModelTableViewProvider {
     }
     
     func object(atIndexPath indexPath: IndexPath) -> Entity? {
-        return datasource != nil ? datasource![indexPath.row] :  nil
+        
+        guard let section = Constants.DetailTableView.Section(rawValue: indexPath.section) else {
+            return nil
+        }
+        
+        switch section {
+        case .profession:
+            return professions()?[indexPath.row]
+            
+        case .friend:
+            return friends()?[indexPath.row]
+        }
     }
 }
 

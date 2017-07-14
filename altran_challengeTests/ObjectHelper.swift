@@ -81,8 +81,6 @@ struct ObjectHelper {
         return Int(arc4random_uniform(UInt32(array.count)))
     }
     
-    // MARK: -
-    
 }
 
 

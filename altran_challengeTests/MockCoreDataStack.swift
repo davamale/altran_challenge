@@ -9,9 +9,5 @@
 import Foundation
 
 class MockCoreDataStack: CoreDataStack {
-    
-    override func save() {
-        // do nothing
-    }
-    
+    override func save() { /* do nothing */ }
 }

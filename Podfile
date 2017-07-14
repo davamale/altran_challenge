@@ -7,12 +7,6 @@ target 'altran_challenge' do
 
   # Pods for altran_challenge
   pod 'AndroidDialogAlert' # an alerts library. This is a simple library I published not so long ago.
-  pod 'STXImageCache' # image loading and caching.
+  pod 'STXImageCache' # Image loading and caching. I implemented my own functionality. But it's buggy. By default, this library will not be used. In case you want to use it, you need to go to GnomeCell, comment line 47 and uncomment line 50.
 
-end
-
-target 'altran_challengeTests' do
-    use_frameworks!
-    # Pods for altran_challenge
-    
 end

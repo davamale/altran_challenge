@@ -10,6 +10,9 @@ import UIKit
 import STXImageCache
 
 class GnomeCell: UITableViewCell {
+    
+    /// Represents the cel height
+    static let cellHeight: CGFloat = 72
 
     @IBOutlet weak var gnomeImageView: UIImageView!
     @IBOutlet weak var gnomeNameLabel: UILabel!
@@ -40,11 +43,11 @@ extension GnomeCell: CellProtocol {
         // image
         if let pictureUrl = gnome.pictureUrl {
             
-            //FIXME: uncomment this line to use my implementation. It's buggy.
-//            gnomeImageView.loadImage(from: pictureUrl)
+            //TODO: UNCOMMENT THIS LINE TO USE MY IMPLEMENTATION. IT'S BUGGY.
+            gnomeImageView.loadImage(from: pictureUrl)
             
-            // library implementation
-            gnomeImageView.stx.image(atURL: URL(string: pictureUrl)!)
+            //FIXME: THIRD PARTY 
+//            gnomeImageView.stx.image(atURL: URL(string: pictureUrl)!)
         }
         
         // professions label

@@ -10,7 +10,7 @@ import XCTest
 
 class GnomeListViewModelTests: XCTestCase {
     
-    let spyViewController = SpyGnomeListView()
+    let spyViewController = SpyGnomeListViewController()
     var viewModel: GnomeListViewModel!
     
     override func setUp() {
@@ -96,7 +96,7 @@ class GnomeListViewModelTests: XCTestCase {
     func testHandleFilterSelection() {
 
         // given:
-        let noFriendsFilter = GnomeListViewModel.Filter.noFriends
+        let noFriendsFilter = Constants.Filter.noFriends
         
         // when:
         let predicate = viewModel.predicate(for: noFriendsFilter)
@@ -107,7 +107,7 @@ class GnomeListViewModelTests: XCTestCase {
         XCTAssert(predicate!.predicateFormat == "hasFriends == 0", "hasFriends must be the proprty to be analyzed")
         
         // given:
-        let noProfessionsFilter = GnomeListViewModel.Filter.noProfession
+        let noProfessionsFilter = Constants.Filter.noProfession
         
         // when:
         let npPredicate = viewModel.predicate(for: noProfessionsFilter)
@@ -118,7 +118,7 @@ class GnomeListViewModelTests: XCTestCase {
         XCTAssert(npPredicate!.predicateFormat == "hasProfessions == 0", "hasProfessions must be the proprty to be analyzed")
         
         // given:
-        let allFilter = GnomeListViewModel.Filter.all
+        let allFilter = Constants.Filter.all
         
         // when:
         let allPredicate = viewModel.predicate(for: allFilter)

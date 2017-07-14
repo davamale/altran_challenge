@@ -12,7 +12,7 @@ import AndroidDialogAlert
 // MARK: - Constants
 fileprivate extension GnomeListViewController {
     
-    struct Constants {
+    struct PrivateConstants {
         /// Constants related do filterControl
         struct FilterControl {
             static let height: CGFloat = 30.0
@@ -42,10 +42,30 @@ class GnomeListViewController: UIViewController {
         tv.tableFooterView = UIView()
         tv.register(GnomeCell.nib, forCellReuseIdentifier: GnomeCell.identifier)
         
+        if #available(iOS 10.0, *) {
+            tv.refreshControl = self.refreshControl
+        } else {
+            tv.addSubview(self.refreshControl)
+        }
+        
         return tv
     }()
     
-    fileprivate let loadingView = UIActivityIndicatorView(activityIndicatorStyle: .white)
+    fileprivate lazy var refreshControl: UIRefreshControl = {
+        
+        let rc = UIRefreshControl()
+        
+        rc.addTarget(self, action: #selector(refreshList), for: .valueChanged)
+        
+        return rc
+    }()
+    
+    fileprivate let loadingView: UIActivityIndicatorView = {
+        let lv = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        lv.hidesWhenStopped = true
+        
+        return lv
+    }()
     
     fileprivate lazy var filterControl: UISegmentedControl = {
         
@@ -59,16 +79,41 @@ class GnomeListViewController: UIViewController {
         return fc
     }()
     
+    // TODO: Refactor
+    fileprivate let emptyView: UIView = {
+        
+        let view = UIView()
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .clear
+        
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .defaultBlack
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.text = "Initial loading my take a few moments..."
+        label.textAlignment = .center
+        
+        view.addSubview(label)
+        
+        label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        label.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        label.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        
+        return view
+    }()
+    
     fileprivate lazy var viewModel: GnomeListViewModel = {
         return GnomeListViewModel(delegate: self)
     }()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         prepareUI()
         loadingView.startAnimating()
+        refreshControl.beginRefreshing()
         viewModel.initialFetch()
     }
     
@@ -82,12 +127,18 @@ class GnomeListViewController: UIViewController {
         super.didReceiveMemoryWarning()
         print("Memory warning!")
     }
+}
+
+//MARK: - Private Methods
+fileprivate extension GnomeListViewController {
     
-    //MARK: Actions
     @objc func filterControlSelection(sender: UISegmentedControl) {
-        viewModel.filter(using: GnomeListViewModel.Filter(rawValue: sender.selectedSegmentIndex)!)
+        viewModel.filter(using: Constants.Filter(rawValue: sender.selectedSegmentIndex)!)
     }
     
+    @objc func refreshList() {
+        viewModel.getList()
+    }
 }
 
 //MARK: - UITableView DataSource
@@ -112,7 +163,7 @@ extension GnomeListViewController: UITableViewDataSource {
 extension GnomeListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 72
+        return GnomeCell.cellHeight
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -123,9 +174,8 @@ extension GnomeListViewController: UITableViewDelegate {
         }
         
         detailView.gnomeName = gnome.name
-        //FIXME: optional
-        detailView.navigationBarColor = gnome.hairColor!.hairColor()
-        navigationController?.show(detailView, sender: self)
+        detailView.navigationBarColor = gnome.hairColor != nil ? gnome.hairColor!.hairColor() : nil
+        navigationController?.pushViewController(detailView, animated: true)
     }
 }
 
@@ -136,21 +186,53 @@ extension GnomeListViewController: GnomeListViewModelDelegate {
         tableView.reloadData()
     }
     
+    func showEmtpyListView() {
+        view.addSubview(emptyView)
+        
+        //TODO: Refactor
+        emptyView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        emptyView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        emptyView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        emptyView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        
+        emptyView.layoutIfNeeded()
+    }
+    
     func showError(withMessage message: String) {
         
-        let alert = AndroidDialogAlert(titleText: "Network Error", messageText: message, buttonText: "Cancel")
-        alert.dialogBorderColor = .groupTableViewBackground
-        
-        alert.alternateButton(title: "Retry") { (alert) in
-            self.viewModel.getList()
-            alert.dismiss(animated: true, completion: nil)
+        DispatchQueue.main.async {
+            // hide refresh control
+            self.refreshControl.endRefreshing()
+            
+            let alert = AndroidDialogAlert(titleText: "Network Error", messageText: message, buttonText: "Cancel")
+            alert.dialogBorderColor = .groupTableViewBackground
+            
+            alert.buttonCompletion = { (alert) in
+                self.loadingView.stopAnimating()
+                alert.dismiss(animated: true, completion: nil)
+            }
+            
+            alert.alternateButton(title: "Retry") { (alert) in
+                self.viewModel.getList()
+                alert.dismiss(animated: true, completion: nil)
+            }
+            
+            self.present(alert, animated: true, completion: nil)
         }
-        
-        present(alert, animated: true, completion: nil)
     }
     
     func didFinishLoading() {
-        loadingView.stopAnimating()
+        
+        DispatchQueue.main.async {
+            
+            // hide refresh control
+            self.refreshControl.endRefreshing()
+            
+            self.loadingView.stopAnimating()
+            
+            // removes empty view in case it was active in the view stack
+            self.emptyView.removeFromSuperview()
+        }
     }
     
     func didInsert(newObject: Gnome, at newIndexPath: IndexPath) {
@@ -158,7 +240,7 @@ extension GnomeListViewController: GnomeListViewModelDelegate {
     }
     
     func didUpdate(object:Gnome, at indexPath: IndexPath) {
-        
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
     
     func beginUpdates() {
@@ -177,7 +259,8 @@ extension GnomeListViewController: Customizable {
         
         view.backgroundColor = .defaultBlue
         navigationController?.navigationBar.removeHairline()
-        
+        let barLoading = UIBarButtonItem(customView: loadingView)
+        navigationItem.rightBarButtonItem = barLoading
         view.addSubview(tableView)
         view.addSubview(filterControl)
         
@@ -188,15 +271,15 @@ extension GnomeListViewController: Customizable {
         
         // filter control
         filterControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-        filterControl.heightAnchor.constraint(equalToConstant: Constants.FilterControl.height).isActive = true
+        filterControl.heightAnchor.constraint(equalToConstant: PrivateConstants.FilterControl.height).isActive = true
         filterControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        filterControl.widthAnchor.constraint(lessThanOrEqualToConstant: Constants.FilterControl.maxWidth).isActive = true
+        filterControl.widthAnchor.constraint(lessThanOrEqualToConstant: PrivateConstants.FilterControl.maxWidth).isActive = true
         
-        let leadingFC = filterControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.FilterControl.leading)
+        let leadingFC = filterControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: PrivateConstants.FilterControl.leading)
         leadingFC.priority = 750
         leadingFC.isActive = true
         
-        let trailingFC = filterControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: Constants.FilterControl.trailing)
+        let trailingFC = filterControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: PrivateConstants.FilterControl.trailing)
         trailingFC.priority = 750
         trailingFC.isActive = true
         
@@ -204,7 +287,7 @@ extension GnomeListViewController: Customizable {
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-        tableView.topAnchor.constraint(equalTo: filterControl.bottomAnchor, constant: Constants.TableView.padding).isActive = true
+        tableView.topAnchor.constraint(equalTo: filterControl.bottomAnchor, constant: PrivateConstants.TableView.padding).isActive = true
         
     }
 }

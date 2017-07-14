@@ -8,14 +8,15 @@
 
 import UIKit
 
-/// <#Description#>
+/// ViewModel procotol
 protocol ViewModel {}
 
-/// <#Description#>
+/// ViewModelTableViewProvider protocol.
 protocol ViewModelTableViewProvider: ViewModel {
     
     associatedtype Entity
     
+    /// Recommended to be implemented if more than one section will be used. Else will return as nil
     var datasource: [Entity]? { get }
     
     /// Number of sections. This method is required to be implemented if the table view has more than one section.
@@ -37,8 +38,12 @@ protocol ViewModelTableViewProvider: ViewModel {
     func object(atIndexPath indexPath: IndexPath) -> Entity?
 }
 
-// MARK: - <#Description#>
+// MARK: - ViewModelTableViewProvider default implementation
 extension ViewModelTableViewProvider {
+    
+    var datasource: [Entity]? {
+        return nil
+    }
     
     func numberOfSections() -> Int {
         return 1

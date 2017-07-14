@@ -11,6 +11,7 @@ import CoreData
 
 class CoreDataStack {
     
+    /// Context in main queue
     private(set) lazy var context: NSManagedObjectContext = {
         let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         moc.persistentStoreCoordinator = self.persistentStoreCoordinator
@@ -21,7 +22,7 @@ class CoreDataStack {
         return NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
     }()
     
-    /// Private Context
+    /// Context in private context
     lazy var privateContext: NSManagedObjectContext =  {
         let privateMOC = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         

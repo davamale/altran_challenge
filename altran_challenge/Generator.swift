@@ -10,6 +10,7 @@ import Foundation
 
 struct Generator {
     
+    /// Returns a unique id
     static var newId: String {
         return UUID().uuidString
     }
