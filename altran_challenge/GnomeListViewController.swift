@@ -45,6 +45,8 @@ class GnomeListViewController: UIViewController {
         return tv
     }()
     
+    fileprivate let loadingView = UIActivityIndicatorView(activityIndicatorStyle: .white)
+    
     fileprivate lazy var filterControl: UISegmentedControl = {
         
         let fc = UISegmentedControl(items: ["All", "No Friends", "No Job"])
@@ -66,7 +68,14 @@ class GnomeListViewController: UIViewController {
         super.viewDidLoad()
         
         prepareUI()
+        loadingView.startAnimating()
         viewModel.initialFetch()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationController?.navigationBar.barTintColor = .defaultBlue
     }
     
     override func didReceiveMemoryWarning() {
@@ -83,6 +92,7 @@ class GnomeListViewController: UIViewController {
 
 //MARK: - UITableView DataSource
 extension GnomeListViewController: UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.numberOfSections()
     }
@@ -100,6 +110,7 @@ extension GnomeListViewController: UITableViewDataSource {
 
 //MARK: - UITableView Delegate
 extension GnomeListViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 72
     }
@@ -107,7 +118,14 @@ extension GnomeListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        print(viewModel.object(atIndexPath: indexPath)!)
+        guard let gnome = viewModel.object(atIndexPath: indexPath), let storyboard = storyboard, let detailView = storyboard.instantiateViewController(withIdentifier: "Detail") as? GnomeDetailViewController else {
+            return
+        }
+        
+        detailView.gnomeName = gnome.name
+        //FIXME: optional
+        detailView.navigationBarColor = gnome.hairColor!.hairColor()
+        navigationController?.show(detailView, sender: self)
     }
 }
 
@@ -132,7 +150,7 @@ extension GnomeListViewController: GnomeListViewModelDelegate {
     }
     
     func didFinishLoading() {
-        //TODO: Hide loading
+        loadingView.stopAnimating()
     }
     
     func didInsert(newObject: Gnome, at newIndexPath: IndexPath) {

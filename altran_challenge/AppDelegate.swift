@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: Customizable {
     func prepareUI() {
         UINavigationBar.appearance().barTintColor = .defaultBlue
+        UINavigationBar.appearance().tintColor = .white
     }
 }
 

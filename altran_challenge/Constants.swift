@@ -26,4 +26,35 @@ struct Constants {
         static let navigationBarStatusBarHeight = navigationBarHeight + statusBarHeight
     }
     
+    /// Enum for Gnomes hair colors
+    enum HairColor: String {
+        
+        case black = "Black"
+        case red = "Red"
+        case green = "Green"
+        case gray = "Gray"
+        case pink = "Pink"
+        
+        func color() -> UIColor {
+            switch self {
+            case .black:
+                return .defaultBlack
+                
+            case .red:
+                return .defaultRed
+                
+            case .green:
+                return .defaultGreen
+                
+            case .gray:
+                return .defaultGray
+                
+            case .pink:
+                return .defaultPink
+
+            }
+        }
+        
+    }
+    
 }

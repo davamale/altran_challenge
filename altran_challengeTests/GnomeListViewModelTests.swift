@@ -58,7 +58,7 @@ class GnomeListViewModelTests: XCTestCase {
         let fetchedObjectsGreaterThanZero = ObjectHelper.stubFetchedObjectsGreaterThanZero
         
         // when:
-        var hasFetchedObjects = viewModel.hasFetchedObjects(in: fetchedObjectsGreaterThanZero)
+        var hasFetchedObjects = viewModel.hasObjects(in: fetchedObjectsGreaterThanZero)
         
         // then
         XCTAssertTrue(hasFetchedObjects, "Objects fetched are greater than zero")
@@ -70,7 +70,7 @@ class GnomeListViewModelTests: XCTestCase {
         let fetchedObjectsEqualToZero = ObjectHelper.stubFetchedObjectsEqualsToZero
         
         // when:
-        hasFetchedObjects = viewModel.hasFetchedObjects(in: fetchedObjectsEqualToZero)
+        hasFetchedObjects = viewModel.hasObjects(in: fetchedObjectsEqualToZero)
         
         // then
         XCTAssertFalse(hasFetchedObjects, "Objects are equal to zero")
@@ -82,7 +82,7 @@ class GnomeListViewModelTests: XCTestCase {
         let fetchedObjectsNil = ObjectHelper.stubFetchedObjectsNil
         
         // when:
-        hasFetchedObjects = viewModel.hasFetchedObjects(in: fetchedObjectsNil)
+        hasFetchedObjects = viewModel.hasObjects(in: fetchedObjectsNil)
         
         // then
         XCTAssertFalse(hasFetchedObjects, "Array object is nil")

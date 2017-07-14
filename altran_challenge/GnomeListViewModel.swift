@@ -67,7 +67,6 @@ extension GnomeListViewModel {
     }
 }
 
-
 class GnomeListViewModel: NSObject {
     
     // MARK: - Properties
@@ -87,6 +86,15 @@ class GnomeListViewModel: NSObject {
     }
 }
 
+// MARK: - ViewModelTableViewProvide
+extension GnomeListViewModel: ViewModelTableViewProvider {
+    typealias Entity = Gnome
+    
+    var datasource: [Gnome]? {
+        return fetchedResultsController.fetchedObjects as? [Gnome]
+    }
+}
+
 // MARK: - Public Methods
 extension GnomeListViewModel {
     
@@ -97,14 +105,15 @@ extension GnomeListViewModel {
         getList()
     }
     
-    
     /// HTTP Get gnome info list.
     func getList() {
         
         NetworkManager.get(url: URL(string: Constants.Routes.gnomeInfo)!) { (json, error) in
             
+            self.delegate.didFinishLoading()
+            
             // notify about the error on an alert only if there is no data being shown
-            if let error = error, self.hasFetchedObjects(in: self.fetchedResultsController.fetchedObjects) {
+            if let error = error, self.hasObjects(in: self.fetchedResultsController.fetchedObjects) {
                 return self.delegate.showError(withMessage: error.localizedDescription)
             }
             
@@ -114,34 +123,6 @@ extension GnomeListViewModel {
             
             self.saveList(gnomeList: gnomeList)
         }
-    }
-    
-    /// Number of sections for view
-    ///
-    /// - Returns: Int
-    func numberOfSections() -> Int {
-        guard let sections = fetchedResultsController.sections else {
-            return 0
-        }
-        return sections.count
-    }
-    
-    /// Number of rows in Section
-    ///
-    /// - Parameter section: section at tableview
-    /// - Returns: Int
-    func numberOfRows(in section: Int) -> Int {
-        guard let sections = fetchedResultsController.sections else {
-            return 0
-        }
-        
-        let sectionInfo = sections[section]
-        
-        return sectionInfo.numberOfObjects
-    }
-    
-    func object(atIndexPath indexPath: IndexPath) -> Gnome? {
-        return fetchedResultsController.object(at: indexPath) as? Gnome
     }
     
     /// Filters fetchedResultsController based on the selected Filter
@@ -176,7 +157,7 @@ extension GnomeListViewModel {
     ///
     /// - Parameter objectArray: object array to evaluate
     /// - Returns: Bool value indicating if it has objects
-    func hasFetchedObjects<T>(in objectArray: [T]?) -> Bool {
+    func hasObjects<T>(in objectArray: [T]?) -> Bool {
         return objectArray != nil ? objectArray!.count > 0 : false
     }
     
