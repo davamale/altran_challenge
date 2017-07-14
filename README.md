@@ -6,3 +6,5 @@
 - Large Data Set Management with NSFetchedResultsController
 - Protocol Oriented Programing
 - Unit Testing
+- Model View ViewModel (MVVM)
+- Auto-layout (programmatically and in Storyboards)
