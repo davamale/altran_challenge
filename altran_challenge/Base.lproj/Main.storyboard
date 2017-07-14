@@ -33,8 +33,7 @@
         <!--Gnome Detail View Controller-->
         <scene sceneID="WLn-bQ-XDH">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uHt-Qn-tfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="Detail" id="OT7-9x-dzQ" customClass="GnomeDetailViewController" customModule="altran_challenge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Detail" automaticallyAdjustsScrollViewInsets="NO" id="OT7-9x-dzQ" customClass="GnomeDetailViewController" customModule="altran_challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yqd-gf-TqL"/>
                         <viewControllerLayoutGuide type="bottom" id="1fj-ZQ-4lP"/>
@@ -45,6 +44,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uHt-Qn-tfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1874" y="121"/>
         </scene>

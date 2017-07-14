@@ -69,7 +69,6 @@
 		57E6A4031F15A2CC002F33D6 /* UIImageView+NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6A4021F15A2CC002F33D6 /* UIImageView+NetworkManager.swift */; };
 		57E6A4051F15C28C002F33D6 /* UIImage+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6A3EE1F155AE3002F33D6 /* UIImage+Default.swift */; };
 		57E6A4061F15C28C002F33D6 /* UIImageView+NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6A4021F15A2CC002F33D6 /* UIImageView+NetworkManager.swift */; };
-		7E4F7DAC5659EE4F40DA1CCA /* Pods_altran_challengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32C88D6B07C6CA62F65B23FF /* Pods_altran_challengeTests.framework */; };
 		CE79D53B5A625DA7ABC0D023 /* Pods_altran_challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 688EAEAEFF4C76E46F171DE3 /* Pods_altran_challenge.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,9 +83,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		09089EC7C92A8F1A0536CB94 /* Pods-altran_challengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-altran_challengeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-altran_challengeTests/Pods-altran_challengeTests.release.xcconfig"; sourceTree = "<group>"; };
 		32C88D6B07C6CA62F65B23FF /* Pods_altran_challengeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_altran_challengeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A3E8D23BB020031492008EC /* Pods-altran_challengeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-altran_challengeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-altran_challengeTests/Pods-altran_challengeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5713A6421F12A4C90096F0FE /* Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
 		5713A6451F12A73C0096F0FE /* GeneratorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratorTests.swift; sourceTree = "<group>"; };
 		5713A6471F12AB240096F0FE /* Gnome+Methods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Gnome+Methods.swift"; sourceTree = "<group>"; };
@@ -154,7 +151,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E4F7DAC5659EE4F40DA1CCA /* Pods_altran_challengeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,8 +343,6 @@
 			children = (
 				F4E1E826A027B55B33330A61 /* Pods-altran_challenge.debug.xcconfig */,
 				AEB8891DCCE4ADF0EB817A98 /* Pods-altran_challenge.release.xcconfig */,
-				3A3E8D23BB020031492008EC /* Pods-altran_challengeTests.debug.xcconfig */,
-				09089EC7C92A8F1A0536CB94 /* Pods-altran_challengeTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -392,12 +386,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 57DA98861F100154004FCACD /* Build configuration list for PBXNativeTarget "altran_challengeTests" */;
 			buildPhases = (
-				71ACCBEC71F3DBF9A476000C /* [CP] Check Pods Manifest.lock */,
 				57DA98761F100154004FCACD /* Sources */,
 				57DA98771F100154004FCACD /* Frameworks */,
 				57DA98781F100154004FCACD /* Resources */,
-				D3897991AFDC677A8C62C15F /* [CP] Embed Pods Frameworks */,
-				6BFC78DA5FCEFF6F1550D93E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -504,36 +495,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-altran_challenge/Pods-altran_challenge-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6BFC78DA5FCEFF6F1550D93E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-altran_challengeTests/Pods-altran_challengeTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		71ACCBEC71F3DBF9A476000C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
 		956C1244E02461CF83A32119 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -547,21 +508,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-altran_challenge/Pods-altran_challenge-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D3897991AFDC677A8C62C15F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-altran_challengeTests/Pods-altran_challengeTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -793,7 +739,6 @@
 		};
 		57DA98871F100154004FCACD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3A3E8D23BB020031492008EC /* Pods-altran_challengeTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -809,7 +754,6 @@
 		};
 		57DA98881F100154004FCACD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 09089EC7C92A8F1A0536CB94 /* Pods-altran_challengeTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

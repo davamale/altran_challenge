@@ -24,7 +24,7 @@ fileprivate extension GnomeListViewController {
         
         /// Constants related to tableView
         struct TableView {
-            static let padding: CGFloat = 3
+            static let padding: CGFloat = 4
         }
     }
 }
@@ -41,6 +41,7 @@ class GnomeListViewController: UIViewController {
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.tableFooterView = UIView()
         tv.register(GnomeCell.nib, forCellReuseIdentifier: GnomeCell.identifier)
+        tv.cellLayoutMarginsFollowReadableWidth = false
         
         if #available(iOS 10.0, *) {
             tv.refreshControl = self.refreshControl

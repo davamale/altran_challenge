@@ -52,6 +52,7 @@ class GnomeDetailViewController: UIViewController {
         tv.tableFooterView = UIView()
         tv.register(GnomeCell.nib, forCellReuseIdentifier: GnomeCell.identifier)
         tv.backgroundColor = .clear
+        tv.cellLayoutMarginsFollowReadableWidth = false
         
         return tv
     }()
@@ -201,7 +202,13 @@ extension GnomeDetailViewController: Customizable {
         // image view
         imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: PrivateConstants.padding).isActive = true
         imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: PrivateConstants.padding).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: view.frame.width / 3).isActive = true
+        
+        // priority lower than max width allow
+        let widthConstraint = imageView.widthAnchor.constraint(equalToConstant: view.frame.width / 3)
+        widthConstraint.priority = 750
+        widthConstraint.isActive = true
+        
+        imageView.widthAnchor.constraint(lessThanOrEqualToConstant: 100).isActive = true
         imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, constant: 0).isActive = true
         
         // name label
