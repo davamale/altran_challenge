@@ -42,12 +42,7 @@ extension GnomeCell: CellProtocol {
         
         // image
         if let pictureUrl = gnome.pictureUrl {
-            
-            //TODO: UNCOMMENT THIS LINE TO USE MY IMPLEMENTATION. IT'S BUGGY.
-            gnomeImageView.loadImage(from: pictureUrl)
-            
-            //FIXME: THIRD PARTY 
-//            gnomeImageView.stx.image(atURL: URL(string: pictureUrl)!)
+            gnomeImageView.stx.image(atURL: URL(string: pictureUrl)!)
         }
         
         // professions label
