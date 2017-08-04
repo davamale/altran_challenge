@@ -1,15 +1,21 @@
 PODS:
   - AndroidDialogAlert (0.2.1)
+  - Nimble (7.0.1)
+  - Quick (1.1.0)
   - STXImageCache (1.0.2)
 
 DEPENDENCIES:
   - AndroidDialogAlert
+  - Nimble (~> 7.0.1)
+  - Quick
   - STXImageCache
 
 SPEC CHECKSUMS:
   AndroidDialogAlert: 4f2b2b585a15430608b6cd0062495548baaa990d
+  Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
+  Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
   STXImageCache: d41f98b0d35426f1dd94f5ae80f7437027da64d1
 
-PODFILE CHECKSUM: c30a3307bc8f681271f14774e4abc12ad50fe5e8
+PODFILE CHECKSUM: edf4ad25e5a9b4d445a58eeb858edb14ce02c788
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.2.1

@@ -8,3 +8,8 @@
 - Unit Testing
 - Model View ViewModel (MVVM)
 - Auto-layout (programmatically and in Storyboards)
+
+## TODO
+- [ ] Migrate tests from XCTest to Quick and Nimble
+- [ ] Refactor ViewModel to be more testable
+- [ ] ReactiveSwift?

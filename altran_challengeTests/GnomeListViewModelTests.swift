@@ -8,6 +8,7 @@
 
 import XCTest
 
+
 class GnomeListViewModelTests: XCTestCase {
     
     let spyViewController = SpyGnomeListViewController()
