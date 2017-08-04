@@ -9,7 +9,7 @@
 import Foundation
 import XCTest
 
-class SpyGnomeListViewController: GnomeListViewModelDelegate {
+class SpyGnomeListViewController {
 
     var promise: XCTestExpectation!
     var finishLoading: Bool!
