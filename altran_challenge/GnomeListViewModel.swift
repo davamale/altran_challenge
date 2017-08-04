@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-enum TableViewAction {
+enum TableViewAction: Equatable {
   
   case insert(gnome: Gnome, indexPath: IndexPath)
   case update(gnome: Gnome, indexPath: IndexPath)
@@ -19,6 +19,29 @@ enum TableViewAction {
   case finishedLoading
   case showEmptyView
   case none
+  
+  public static func ==(lhs: TableViewAction, rhs: TableViewAction) -> Bool {
+    switch (lhs, rhs) {
+    case (finishedLoading, finishedLoading):
+      return true
+    case (reload, reload):
+      return true
+    case (beginUpdates, beginUpdates):
+      return true
+    case (endUpdates, endUpdates):
+      return true
+    case (none, none):
+      return true
+    case (showEmptyView, showEmptyView):
+      return true
+    case (let .insert(lhsGnome, lhsIndexPath), let insert(rhsGnome, rhsIndexPath)):
+      return lhsGnome == rhsGnome && lhsIndexPath == rhsIndexPath
+    case (let update(lhsGnome, lhsIndexPath), let insert(rhsGnome, rhsIndexPath)):
+      return lhsGnome == rhsGnome && lhsIndexPath == rhsIndexPath
+      
+    default: return false
+    }
+  }
 }
 
 struct Action {
@@ -145,7 +168,10 @@ extension GnomeListViewModel {
       
       CoreDataStack.shared.save()
       
-      self.action.tableViewAction = .finishedLoading
+      DispatchQueue.main.async {
+        self.action.tableViewAction = .finishedLoading
+      }
+      
     }
   }
   

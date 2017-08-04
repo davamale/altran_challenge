@@ -18,38 +18,39 @@ class GnomeListViewModelTests: XCTestCase {
         
       viewModel = GnomeListViewModel() { action in
         
+        switch action.tableViewAction {
+        case .finishedLoading:
+          return self.spyViewController.promise.fulfill()
+        default: break
+        }
+        
       }
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
     // MARK: - Save List Test
-//    func testSaveList() {
-//
-//        spyViewController.promise = expectation(description: "Calls didFinishLoading delegate method")
-//        
-//        /*
-//         given:
-//            A well formed json object
-//         */
-//        let gnomeList = ObjectHelper.gnomeJsonMock()
-//
-//        // when:
-//        viewModel.saveList(gnomeList: [gnomeList])
-//        
-//        // then:
-//        waitForExpectations(timeout: 1) { (error) in
-//            if error != nil {
-//                XCTFail(error!.localizedDescription)
-//            }
-//            
-//            XCTAssert(self.viewModel.action.tableViewAction == TableViewAction.finishedLoading, "didFinishLoading wasn't called")
-//        }
-//    }
-    
+    func testSaveList() {
+
+        spyViewController.promise = expectation(description: "Calls didFinishLoading delegate method")
+        
+        /*
+         given:
+            A well formed json object
+         */
+        let gnomeList = ObjectHelper.gnomeJsonMock()
+
+        // when:
+        viewModel.saveList(gnomeList: [gnomeList])
+        
+        // then:
+        waitForExpectations(timeout: 1) { (error) in
+            if error != nil {
+                XCTFail(error!.localizedDescription)
+            }
+            
+            XCTAssert(self.viewModel.action.tableViewAction == .finishedLoading, "didFinishLoading wasn't called")
+        }
+    }
+  
     // MARK: - Has Fetched Object Test
     func testHasFetchedObjects() {
         
