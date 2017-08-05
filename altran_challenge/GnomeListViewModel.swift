@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-enum TableViewAction: Equatable {
+enum TableViewAction {
   
   case insert(gnome: Gnome, indexPath: IndexPath)
   case update(gnome: Gnome, indexPath: IndexPath)
@@ -19,7 +19,9 @@ enum TableViewAction: Equatable {
   case finishedLoading
   case showEmptyView
   case none
-  
+}
+
+extension TableViewAction: Equatable {
   public static func ==(lhs: TableViewAction, rhs: TableViewAction) -> Bool {
     switch (lhs, rhs) {
     case (finishedLoading, finishedLoading):
@@ -67,8 +69,10 @@ final class GnomeListViewModel: NSObject {
   }
   
   let closure: ((Action) -> Void)
+  let networkManager: Networking
   
-  init(closure: @escaping ((Action) -> Void)) {
+  init(networkManager: Networking, closure: @escaping ((Action) -> Void)) {
+    self.networkManager = networkManager
     self.closure = closure
     super.init()
   }
@@ -102,7 +106,7 @@ extension GnomeListViewModel {
       action.tableViewAction = .showEmptyView
     }
     
-    NetworkManager.get(url: URL(string: Constants.Routes.gnomeInfo)!) { (json, error) in
+    networkManager.get(url: URL(string: Constants.Routes.gnomeInfo)!) { (json, error) in
       
       // notify about the error on an alert only if there is no data being shown
       if let error = error, hasLoadedObjects {
@@ -127,7 +131,7 @@ extension GnomeListViewModel {
 }
 
 // MARK: - Private Methods
-extension GnomeListViewModel {
+fileprivate extension GnomeListViewModel {
   
   func fetch(forceReload: Bool? = nil) {
     

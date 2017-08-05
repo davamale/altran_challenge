@@ -16,6 +16,9 @@ public typealias JSONArray = [NSDictionary]
 /// Response
 public typealias Response = (JSONArray?, NetworkError?) -> ()
 
+protocol Networking {
+  func get(url: URL, withCompletion completion: @escaping Response)
+}
 
 /// Network Errors
 public enum NetworkError: Error {
@@ -23,7 +26,7 @@ public enum NetworkError: Error {
     case connectionError(String)
 }
 
-class NetworkManager {
+final class NetworkManager {
     
     // MARK: Properties
     let cache: NSCache<AnyObject, AnyObject>
@@ -39,7 +42,7 @@ class NetworkManager {
 }
 
 // MARK: - Class Methods
-extension NetworkManager {
+extension NetworkManager: Networking {
     // MARK: - Class Method
     
     /// Performs an HTTP GET
@@ -47,7 +50,7 @@ extension NetworkManager {
     /// - Parameters:
     ///   - url: url to send GET request
     ///   - completion: Response object
-    static func get(url: URL, withCompletion completion: @escaping Response) {
+    func get(url: URL, withCompletion completion: @escaping Response) {
         
         let request = URLRequest(url: url)
         

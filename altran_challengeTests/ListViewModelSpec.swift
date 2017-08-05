@@ -11,12 +11,13 @@ import Quick
 import Nimble
 
 class ListViewModelSpec: QuickSpec {
-
+  
   override func spec() {
     
     describe("ListViewModelSpec") {
       
-      let viewModel = GnomeListViewModel() { action in
+      let networkStub = NetworkStub()
+      let viewModel = GnomeListViewModel(networkManager: networkStub) { action in
         
         switch action.tableViewAction {
         case .finishedLoading:
@@ -26,30 +27,39 @@ class ListViewModelSpec: QuickSpec {
         
       }
       
-      context("After inserting objects") {
-        let fetchedObjectsGreaterThanZero = ObjectHelper.stubFetchedObjectsGreaterThanZero
-        let hasFetchedObjects = viewModel.hasObjects(in: fetchedObjectsGreaterThanZero)
-        
-        it("Has objects method should return true") {
-          expect(hasFetchedObjects).to(beTrue())
-        }
-      } // ends After inserting objects
-      
-      
-      context("Save list with valid objects") {
-        let spyViewController = SpyGnomeListViewController()
-        spyViewController.promise = expectation(description: "Calls didFinishLoading delegate method")
-        
-        let gnomeList = ObjectHelper.gnomeJsonMock()
-        viewModel.saveList(gnomeList: [gnomeList])
+      context("Get Gnome list with successful return from end-point") {
+        viewModel.handleGetList()
         
         it("TableviewAction property in action should be updated to .finishedLoading") {
-          expect(viewModel.action.tableViewAction).toEventually(equal(TableViewAction.finishedLoading))
+          expect(viewModel.action.tableViewAction)
+            .toEventually(equal(TableViewAction.finishedLoading))
         }
-        
       }
       
+      context("Get Gnome list with corrupted response") {
+        networkStub.shouldReturnSuccess = false
+        viewModel.handleGetList()
+        
+        it("Show message property should be called") {
+          expect(viewModel.action.alertMessage)
+            .toEventuallyNot(beNil())
+        }
+      }
+      
+      // TODO: test filter
+      
     }
-    
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+

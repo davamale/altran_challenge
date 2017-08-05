@@ -41,6 +41,7 @@
 		573599191F1008B900821FFA /* UIColor+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573599181F1008B900821FFA /* UIColor+Default.swift */; };
 		5735991A1F1008B900821FFA /* UIColor+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573599181F1008B900821FFA /* UIColor+Default.swift */; };
 		573F9FCC1F34D5A00052E4E2 /* ListViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F9FCB1F34D5A00052E4E2 /* ListViewModelSpec.swift */; };
+		573F9FCE1F35574E0052E4E2 /* NetworkStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F9FCD1F35574E0052E4E2 /* NetworkStub.swift */; };
 		5748CBFF1F13FC2300FDC175 /* Profession+Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E050141F13283E002008AC /* Profession+Methods.swift */; };
 		5748CC021F1469A400FDC175 /* SpyGnomeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748CC011F1469A400FDC175 /* SpyGnomeListViewController.swift */; };
 		57D3CB651F18195000108411 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D3CB641F18195000108411 /* ViewModel.swift */; };
@@ -107,6 +108,7 @@
 		573599131F10086E00821FFA /* CoreDataProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataProtocol.swift; sourceTree = "<group>"; };
 		573599181F1008B900821FFA /* UIColor+Default.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Default.swift"; sourceTree = "<group>"; };
 		573F9FCB1F34D5A00052E4E2 /* ListViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewModelSpec.swift; sourceTree = "<group>"; };
+		573F9FCD1F35574E0052E4E2 /* NetworkStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkStub.swift; sourceTree = "<group>"; };
 		5748CC011F1469A400FDC175 /* SpyGnomeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpyGnomeListViewController.swift; sourceTree = "<group>"; };
 		57D3CB641F18195000108411 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		57D3CB691F18349800108411 /* String+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Color.swift"; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				57E050111F12F96C002008AC /* ObjectHelper.swift */,
+				573F9FCD1F35574E0052E4E2 /* NetworkStub.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -636,6 +639,7 @@
 				5713A6511F12CB290096F0FE /* NSManagedObjectContext+Default.swift in Sources */,
 				57E6A3F11F156D3B002F33D6 /* MockCoreDataStack.swift in Sources */,
 				5713A6491F12AB240096F0FE /* Gnome+Methods.swift in Sources */,
+				573F9FCE1F35574E0052E4E2 /* NetworkStub.swift in Sources */,
 				573599031F1004F400821FFA /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
