@@ -116,7 +116,7 @@ class GnomeListViewController: UIViewController {
   
   fileprivate lazy var viewModel: GnomeListViewModel = {
     return GnomeListViewModel(networkManager: NetworkManager()) { action in
-      self.handleAction(action)
+      self.handleViewModelAction(action)
     }
   }()
   
@@ -136,7 +136,7 @@ class GnomeListViewController: UIViewController {
     navigationController?.navigationBar.barTintColor = .defaultBlue
   }
   
-  func handleAction(_ action: Action) {
+  func handleViewModelAction(_ action: Action) {
     
     showError(withMessage: action.alertMessage)
     
@@ -182,11 +182,11 @@ class GnomeListViewController: UIViewController {
 fileprivate extension GnomeListViewController {
   
   @objc func filterControlSelection(sender: UISegmentedControl) {
-    viewModel.filter(using: Constants.Filter(rawValue: sender.selectedSegmentIndex)!)
+    viewModel.filterControlTapped(using: Constants.Filter(rawValue: sender.selectedSegmentIndex)!)
   }
   
   @objc func refreshList() {
-    viewModel.handleGetList()
+    viewModel.refreshListAction()
   }
 }
 
@@ -266,7 +266,7 @@ fileprivate extension GnomeListViewController {
       }
       
       alert.alternateButton(title: "Retry") { (alert) in
-        self.viewModel.handleGetList()
+        self.viewModel.refreshListAction()
         alert.dismiss(animated: true, completion: nil)
       }
       

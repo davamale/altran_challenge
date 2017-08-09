@@ -1,6 +1,6 @@
 # Altran Challenge
 
-## Core Fuctionality
+## Core Functionality
 - Networking (NSUrlSession)
 - Core Data (with multiple NSManagedObjectContext)
 - Large Data Set Management with NSFetchedResultsController
@@ -12,4 +12,4 @@
 ## TODO
 - [ ] Migrate tests from XCTest to Quick and Nimble
 - [ ] Refactor ViewModel to be more testable
-- [ ] ReactiveSwift?
+- [ ] Migrate Detail ViewModel/Controller to RxSwift

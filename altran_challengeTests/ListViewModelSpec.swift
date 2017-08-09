@@ -28,7 +28,7 @@ class ListViewModelSpec: QuickSpec {
       }
       
       context("Get Gnome list with successful return from end-point") {
-        viewModel.handleGetList()
+        viewModel.refreshListAction()
         
         it("TableviewAction property in action should be updated to .finishedLoading") {
           expect(viewModel.action.tableViewAction)
@@ -38,7 +38,7 @@ class ListViewModelSpec: QuickSpec {
       
       context("Get Gnome list with corrupted response") {
         networkStub.shouldReturnSuccess = false
-        viewModel.handleGetList()
+        viewModel.refreshListAction()
         
         it("Show message property should be called") {
           expect(viewModel.action.alertMessage)

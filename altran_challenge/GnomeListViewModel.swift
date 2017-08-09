@@ -94,11 +94,11 @@ extension GnomeListViewModel {
   func viewDidLoad() {
     
     fetch()
-    handleGetList()
+    refreshListAction()
   }
   
   /// HTTP Get gnome info list.
-  func handleGetList() {
+  func refreshListAction() {
     
     let hasLoadedObjects = hasObjects(in: fetchedResultsController.fetchedObjects)
     
@@ -124,7 +124,7 @@ extension GnomeListViewModel {
   /// Filters fetchedResultsController based on the selected Filter
   ///
   /// - Parameter filter: filter to apply
-  func filter(using filter: Constants.Filter) {
+  func filterControlTapped(using filter: Constants.Filter) {
     fetchedResultsController.fetchRequest.predicate = predicate(for: filter)
     fetch(forceReload: true)
   }
