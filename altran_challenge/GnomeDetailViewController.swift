@@ -19,14 +19,29 @@ fileprivate extension GnomeDetailViewController {
 
 class GnomeDetailViewController: UIViewController {
   
+  fileprivate var imageView: UIImageView = {
+    
+    let iv = UIImageView()
+    
+    iv.backgroundColor = UIColor.defaultGray
+    iv.translatesAutoresizingMaskIntoConstraints = false
+    iv.contentMode = .scaleAspectFill
+    iv.clipsToBounds = true
+    
+    return iv
+  }()
+  
+  
   fileprivate var nameLabel = UILabel.detailLabel()
+  
   fileprivate var ageLabel = UILabel.detailLabel()
+  
   fileprivate var heightLabel = UILabel.detailLabel()
+  
   fileprivate var weightLabel = UILabel.detailLabel()
+  
   fileprivate let hairColorLabel = UILabel.detailLabel()
-  fileprivate let viewModel = DetailViewModel()
-  var gnomeName: String!
-  var navigationBarColor: UIColor?
+  
   fileprivate lazy var tableView: UITableView = {
     
     let tv = UITableView()
@@ -42,25 +57,18 @@ class GnomeDetailViewController: UIViewController {
     return tv
   }()
   
-  fileprivate var imageView: UIImageView = {
-    
-    let iv = UIImageView()
-    
-    iv.backgroundColor = UIColor.defaultGray
-    iv.translatesAutoresizingMaskIntoConstraints = false
-    iv.contentMode = .scaleAspectFill
-    iv.clipsToBounds = true
-    
-    return iv
+  var gnomeName: String!
+  
+  var navigationBarColor: UIColor?
+  
+  fileprivate lazy var viewModel: GnomeDetailViewModel = {
+    return GnomeDetailViewModel(gnomeName: self.gnomeName, delegate: self)
   }()
-
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     prepareUI()
-    bindViewModel()
-    viewModel.viewDidLoad(with: gnomeName)
+    viewModel.fetchGnomeRelations()
   }
   
   override func viewDidLayoutSubviews() {
@@ -74,19 +82,16 @@ class GnomeDetailViewController: UIViewController {
   }
 }
 
-// MARK: - Private Methods
-fileprivate extension GnomeDetailViewController {
+// MARK: - Public Methods
+extension GnomeDetailViewController {
   
-  func bindViewModel() {
-    viewModel.outputs.gnomeObject
-      .subscribe { observable in self.populate(with: observable.element != nil ? observable.element! : nil) }
-      .addDisposableTo(viewModel.disposeBag)
-    
-    
-  }
+}
+
+// MARK: - Private Methods
+extension GnomeDetailViewController {
   
   /// Adjust layout changes
-  func handleLayout() {
+  fileprivate func handleLayout() {
     imageView.layer.cornerRadius = imageView.frame.height / 2
   }
 }
@@ -94,22 +99,40 @@ fileprivate extension GnomeDetailViewController {
 // MARK: - UITableView DataSource
 extension GnomeDetailViewController: UITableViewDataSource {
   func numberOfSections(in tableView: UITableView) -> Int {
-    return 0
+    return viewModel.numberOfSections()
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 0
+    return viewModel.numberOfRows(in: section)
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    guard let section = Constants.DetailTableView
-      .Section(rawValue: indexPath.section) else { return UITableViewCell() }
+    guard let section = Constants.DetailTableView.Section(rawValue: indexPath.section) else {
+      return UITableViewCell()
+    }
     
     switch section {
-    case .profession: return UITableViewCell()
+    case .profession:
       
-    case .friend: return UITableViewCell()
+      var cell = tableView.dequeueReusableCell(withIdentifier: Constants.DetailTableView.professionCellIdentifier)
+      
+      if (cell == nil) {
+        cell = UITableViewCell(style: .default, reuseIdentifier: Constants.DetailTableView.professionCellIdentifier)
+      }
+      
+      guard let profession = viewModel.object(atIndexPath: indexPath) as? Profession else {
+        return cell!
+      }
+      
+      cell!.textLabel?.text = profession.name
+      
+      return cell!
+      
+    case .friend:
+      
+      let cell = tableView.dequeueReusableCell(withIdentifier: GnomeCell.identifier, for: indexPath) as! GnomeCell
+      return cell.configure(withEntity: viewModel.object(atIndexPath: indexPath))
     }
   }
 }
@@ -128,7 +151,7 @@ extension GnomeDetailViewController: UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    return ""
+    return viewModel.title(for: section)
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -137,10 +160,8 @@ extension GnomeDetailViewController: UITableViewDelegate {
 }
 
 // MARK: - GnomeDetailViewModel Delegate
-extension GnomeDetailViewController {
-  func populate(with gnome: Gnome?) {
-    
-    guard let gnome = gnome else { return }
+extension GnomeDetailViewController: GnomeDetailViewModelDelegate {
+  func populate(with gnome: Gnome) {
     
     nameLabel.text = gnome.name
     ageLabel.text = "Age: \(gnome.age)"

@@ -8,56 +8,7 @@
 
 import Foundation
 import CoreData
-import RxSwift
 
-protocol DetailViewModelInput {
-  func viewDidLoad(with gnomeName: String)
-}
-
-protocol DetailViewModelOutput {
-  var gnomeObject: Observable<Gnome?> { get }
-  //  var numberOfSections: Observable<Int> { get }
-  //  var numberOfRows: Observable<Int> { get }
-}
-
-protocol DetailViewModelType {
-  var disposeBag: DisposeBag { get }
-  var inputs: DetailViewModelInput { get }
-  var outputs: DetailViewModelOutput { get }
-}
-
-struct DetailViewModel: DetailViewModelType, DetailViewModelInput, DetailViewModelOutput {
-  
-  let disposeBag = DisposeBag()
-  let gnomeObject: Observable<Gnome?>
-  
-  fileprivate let professionsProperty = PublishSubject<Profession>()
-  fileprivate let friendsProperty = PublishSubject<Gnome>()
-  
-  init() {
-    gnomeObject = viewDidLoadProperty
-      .filter { !$0.isEmpty }
-      .map { guard let gnome = Gnome.fetch(uniqueValue: $0,
-                                           forKey: "name")! as? Gnome else { return nil }
-        return gnome
-    }
-  }
-  
-  let viewDidLoadProperty = PublishSubject<String>()
-  func viewDidLoad(with gnomeName: String) {
-    viewDidLoadProperty.on(.next(gnomeName))
-    viewDidLoadProperty.onCompleted()
-  }
-  
-}
-
-extension DetailViewModel {
-  var inputs: DetailViewModelInput { return self }
-  var outputs: DetailViewModelOutput { return self }
-}
-
-
-//FIXME: Remove!
 protocol GnomeDetailViewModelDelegate {
   
   /// Populates gnome info.
@@ -66,28 +17,24 @@ protocol GnomeDetailViewModelDelegate {
   func populate(with gnome: Gnome)
 }
 
-struct GnomeDetailViewModel {
+class GnomeDetailViewModel: NSObject {
   
   fileprivate var gnomeName: String!
   fileprivate var gnome: Gnome?
   
   var delegate: GnomeDetailViewModelDelegate!
   
-  
-  
   init(gnomeName: String, delegate: GnomeDetailViewModelDelegate) {
+    super.init()
     self.gnomeName = gnomeName
     self.delegate = delegate
   }
-  
-  
 }
-
 
 // MARK: - Public Methods
 extension GnomeDetailViewModel {
   
-  mutating func fetchGnomeRelations() {
+  func fetchGnomeRelations() {
     guard let gnome = Gnome.fetch(uniqueValue: gnomeName, forKey: "name")! as? Gnome else {
       return
     }
@@ -126,7 +73,7 @@ extension GnomeDetailViewModel {
 }
 
 // MARK: - Private Methods
-fileprivate extension GnomeDetailViewModel {
+extension GnomeDetailViewModel {
   
   func professions() -> [Profession]? {
     return gnome != nil ? gnome!.professions?.allObjects as? [Profession] : nil
