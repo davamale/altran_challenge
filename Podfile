@@ -17,7 +17,7 @@ target 'altran_challengeTests' do
   use_frameworks!
   
   pod 'Quick'
-  pod 'Nimble', '~> 7.0.1'
+  pod 'Nimble', '~> 7.0'
   pod 'RxTest'
   
 end

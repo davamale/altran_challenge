@@ -9,7 +9,7 @@ PODS:
 
 DEPENDENCIES:
   - AndroidDialogAlert
-  - Nimble (~> 7.0.1)
+  - Nimble (~> 7.0)
   - Quick
   - RxSwift
   - RxTest
@@ -23,6 +23,6 @@ SPEC CHECKSUMS:
   RxTest: 1d00348a7848c91ab5bf5d197d2378aa6b2bb356
   STXImageCache: d41f98b0d35426f1dd94f5ae80f7437027da64d1
 
-PODFILE CHECKSUM: c418700aa89cdb2fb96d26d8e48369d9b572385a
+PODFILE CHECKSUM: 6604e7f93af6e718dafbfac9b8c05e5bf850a02e
 
 COCOAPODS: 1.2.1
