@@ -132,7 +132,7 @@ extension GnomeDetailViewController: UITableViewDataSource {
     case .friend:
       
       let cell = tableView.dequeueReusableCell(withIdentifier: GnomeCell.identifier, for: indexPath) as! GnomeCell
-      return cell.configure(withEntity: viewModel.object(atIndexPath: indexPath))
+      return cell.configured(withEntity: viewModel.object(atIndexPath: indexPath))
     }
   }
 }

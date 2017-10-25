@@ -8,6 +8,8 @@
 
 import CoreData
 
+public typealias Predicate = [String : AnyObject]
+
 // MARK: ManageObject Protocol
 public protocol ManagedObjectType: class {
     
@@ -34,7 +36,6 @@ extension ManagedObjectType where Self: NSManagedObject {
     }
 }
 
-public typealias Predicate = [String : AnyObject]
 
 // MARK: Methods Protocol
 public protocol ManagedObjectMethods: class {

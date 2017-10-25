@@ -126,7 +126,6 @@ class GnomeListViewController: UIViewController {
     prepareUI()
     loadingView.startAnimating()
     refreshControl.beginRefreshing()
-    
     viewModel.viewDidLoad()
   }
   
@@ -175,7 +174,6 @@ class GnomeListViewController: UIViewController {
       
     }
   }
-  
 }
 
 //MARK: - Private Methods
@@ -188,49 +186,6 @@ fileprivate extension GnomeListViewController {
   @objc func refreshList() {
     viewModel.refreshListAction()
   }
-}
-
-//MARK: - UITableView DataSource
-extension GnomeListViewController: UITableViewDataSource {
-  
-  func numberOfSections(in tableView: UITableView) -> Int {
-    return viewModel.numberOfSections()
-  }
-  
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return viewModel.numberOfRows(in: section)
-  }
-  
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
-    let cell = tableView.dequeueReusableCell(withIdentifier: GnomeCell.identifier,
-                                             for: indexPath) as! GnomeCell
-    return cell.configure(withEntity: viewModel.object(atIndexPath: indexPath))
-  }
-}
-
-//MARK: - UITableView Delegate
-extension GnomeListViewController: UITableViewDelegate {
-  
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return GnomeCell.cellHeight
-  }
-  
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    tableView.deselectRow(at: indexPath, animated: true)
-    
-    guard let gnome = viewModel.object(atIndexPath: indexPath),
-      let storyboard = storyboard,
-      let detailView = storyboard.instantiateViewController(withIdentifier: "Detail") as? GnomeDetailViewController else { return }
-    
-    detailView.gnomeName = gnome.name
-    detailView.navigationBarColor = gnome.hairColor != nil ? gnome.hairColor!.hairColor() : nil
-    navigationController?.pushViewController(detailView, animated: true)
-  }
-}
-
-//MARK: - Private Methods
-fileprivate extension GnomeListViewController {
   
   func showEmtpyListView() {
     view.addSubview(emptyView)
@@ -286,6 +241,45 @@ fileprivate extension GnomeListViewController {
       // removes empty view in case it was active in the view stack
       self.emptyView.removeFromSuperview()
     }
+  }
+}
+
+//MARK: - UITableView DataSource
+extension GnomeListViewController: UITableViewDataSource {
+  
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return viewModel.numberOfSections()
+  }
+  
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return viewModel.numberOfRows(in: section)
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    let cell = tableView.dequeueReusableCell(withIdentifier: GnomeCell.identifier,
+                                             for: indexPath) as! GnomeCell
+    return cell.configured(withEntity: viewModel.object(atIndexPath: indexPath))
+  }
+}
+
+//MARK: - UITableView Delegate
+extension GnomeListViewController: UITableViewDelegate {
+  
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return GnomeCell.cellHeight
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
+    
+    guard let gnome = viewModel.object(atIndexPath: indexPath),
+      let storyboard = storyboard,
+      let detailView = storyboard.instantiateViewController(withIdentifier: "Detail") as? GnomeDetailViewController else { return }
+    
+    detailView.gnomeName = gnome.name
+    detailView.navigationBarColor = gnome.hairColor != nil ? gnome.hairColor!.hairColor() : nil
+    navigationController?.pushViewController(detailView, animated: true)
   }
 }
 

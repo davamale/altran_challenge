@@ -23,7 +23,7 @@ protocol CellProtocol: class {
     ///
     /// - Parameter entity: entity to populate the cell
     /// - Returns: UITableViewCell subclass
-    func configure<Entity>(withEntity entity: Entity) -> Self
+    func configured<Entity>(withEntity entity: Entity) -> Self
 }
 
 extension CellProtocol where Self: UITableViewCell {

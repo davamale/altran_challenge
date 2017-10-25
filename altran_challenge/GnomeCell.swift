@@ -28,7 +28,7 @@ class GnomeCell: UITableViewCell {
 }
 
 extension GnomeCell: CellProtocol {
-    func configure<Entity>(withEntity entity: Entity) -> Self {
+    func configured<Entity>(withEntity entity: Entity) -> Self {
         
         guard let gnome = entity as? Gnome else {
             return self

@@ -8,10 +8,13 @@
 
 import UIKit
 
-/// alias NSDictionary to JSON
+//MARK: Typealiasses
 public typealias JSON = NSDictionary
-
 public typealias JSONArray = [NSDictionary]
+
+protocol Networking {
+  func get(url: URL, withCompletion completion: @escaping (Response) -> Void)
+}
 
 /// Response
 public enum Response {
@@ -19,9 +22,6 @@ public enum Response {
   case error(NetworkError)
 }
 
-protocol Networking {
-  func get(url: URL, withCompletion completion: @escaping (Response) -> Void)
-}
 
 /// Network Errors
 public enum NetworkError: Error {
