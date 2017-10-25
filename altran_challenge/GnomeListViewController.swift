@@ -115,7 +115,7 @@ class GnomeListViewController: UIViewController {
   }()
   
   fileprivate lazy var viewModel: GnomeListViewModel = {
-    return GnomeListViewModel(networkManager: NetworkManager()) { action in
+    return GnomeListViewModel(networkManager: NetworkManager()) { [unowned self] action in
       self.handleViewModelAction(action)
     }
   }()
