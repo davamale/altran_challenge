@@ -205,7 +205,7 @@ extension GnomeDetailViewController: Customizable {
     
     // priority lower than max width allow
     let widthConstraint = imageView.widthAnchor.constraint(equalToConstant: view.frame.width / 3)
-    widthConstraint.priority = 750
+    widthConstraint.priority = UILayoutPriority(rawValue: 750)
     widthConstraint.isActive = true
     
     imageView.widthAnchor.constraint(lessThanOrEqualToConstant: 100).isActive = true

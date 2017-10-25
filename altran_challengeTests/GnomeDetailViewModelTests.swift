@@ -7,8 +7,6 @@
 //
 
 import XCTest
-import RxTest
-import RxSwift
 import Nimble
 
 class GnomeDetailViewModelTests: XCTestCase {

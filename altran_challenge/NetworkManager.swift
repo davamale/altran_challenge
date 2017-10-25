@@ -14,10 +14,13 @@ public typealias JSON = NSDictionary
 public typealias JSONArray = [NSDictionary]
 
 /// Response
-public typealias Response = (JSONArray?, NetworkError?) -> ()
+public enum Response {
+  case success(JSONArray)
+  case error(NetworkError)
+}
 
 protocol Networking {
-  func get(url: URL, withCompletion completion: @escaping Response)
+  func get(url: URL, withCompletion completion: @escaping (Response) -> Void)
 }
 
 /// Network Errors
@@ -50,7 +53,7 @@ extension NetworkManager: Networking {
     /// - Parameters:
     ///   - url: url to send GET request
     ///   - completion: Response object
-    func get(url: URL, withCompletion completion: @escaping Response) {
+  func get(url: URL, withCompletion completion: @escaping (Response) -> Void) {
         
         let request = URLRequest(url: url)
         
@@ -61,15 +64,17 @@ extension NetworkManager: Networking {
         let task = session.dataTask(with: request, completionHandler: {(data, response, error) in
             
             if let error = error {
-                return completion(nil, NetworkError.connectionError(error.localizedDescription))
+                return completion(Response.error(NetworkError.connectionError(error.localizedDescription)))
             }
             
-            guard let data = data, let json = try? JSONSerialization.jsonObject(with: data, options: []) as? JSON else {
-                return completion(nil, NetworkError.responseError("Response Error"))
+            guard let data = data,
+              let json = try? JSONSerialization.jsonObject(with: data, options: []) as? JSON,
+              let response = json?["Brastlewark"] as? JSONArray else {
+                return completion(Response.error(NetworkError.responseError("Response Error")))
             }
             
             DispatchQueue.main.async {
-                completion(json?["Brastlewark"] as? JSONArray, nil)
+                completion(Response.success(response))
             }
         });
         
@@ -105,7 +110,9 @@ extension NetworkManager {
                 let data = try Data(contentsOf: url)
                 
                 // generate and compress image
-                guard let image = UIImage(data: data), let thumbnailData = UIImageJPEGRepresentation(image, 0), let thumbnail = UIImage(data: thumbnailData)  else {
+                guard let image = UIImage(data: data),
+                  let thumbnailData = UIImageJPEGRepresentation(image, 0),
+                  let thumbnail = UIImage(data: thumbnailData)  else {
                     return completion(nil, NetworkError.responseError("Image Data Corrupted"))
                 }
                 

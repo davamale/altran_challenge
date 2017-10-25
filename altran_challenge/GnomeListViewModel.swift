@@ -56,7 +56,10 @@ final class GnomeListViewModel: NSObject {
   // MARK: - Properties
   fileprivate lazy var fetchedResultsController: NSFetchedResultsController = { () -> NSFetchedResultsController<NSFetchRequestResult> in
     
-    let frc = NSFetchedResultsController(fetchRequest: Gnome.sortedFetchRequest, managedObjectContext: CoreDataStack.shared.context, sectionNameKeyPath: nil, cacheName: nil)
+    let frc = NSFetchedResultsController(fetchRequest: Gnome.sortedFetchRequest,
+                                         managedObjectContext: CoreDataStack.shared.context,
+                                         sectionNameKeyPath: nil,
+                                         cacheName: nil)
     frc.delegate = self
     
     return frc
@@ -106,18 +109,15 @@ extension GnomeListViewModel {
       action.tableViewAction = .showEmptyView
     }
     
-    networkManager.get(url: URL(string: Constants.Routes.gnomeInfo)!) { (json, error) in
+    networkManager.get(url: URL(string: Constants.Routes.gnomeInfo)!) { response in
       
-      // notify about the error on an alert only if there is no data being shown
-      if let error = error, hasLoadedObjects {
+      switch response {
+      case .error (let error):
         return self.action.alertMessage = error.localizedDescription
+        
+      case .success (let json):
+        return self.saveList(gnomeList: json)
       }
-      
-      guard let gnomeList = json else {
-        return self.action.alertMessage = "Error on HTTP Get Response!"
-      }
-      
-      self.saveList(gnomeList: gnomeList)
     }
   }
   

@@ -12,13 +12,13 @@ final class NetworkStub: Networking {
   
   var shouldReturnSuccess: Bool = true
   
-  func get(url: URL, withCompletion completion: @escaping Response) {
+  func get(url: URL, withCompletion completion: @escaping (Response) -> Void) {
     
     if shouldReturnSuccess {
       let jsonResponse: JSONArray = [ObjectHelper.gnomeJsonMock()]
-      return completion(jsonResponse, nil)
+      return completion(Response.success(jsonResponse))
     }
     
-    completion(nil, NetworkError.responseError("Generic error"))
+    completion(Response.error(NetworkError.responseError("Generic error")))
   }
 }

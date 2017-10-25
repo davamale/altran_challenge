@@ -8,8 +8,8 @@ target 'altran_challenge' do
   # Pods for altran_challenge
   pod 'AndroidDialogAlert' # an alerts library. This is a simple library I published not so long ago.
   pod 'STXImageCache'
-  pod 'RxSwift'
-  
+#  pod 'RxSwift'
+
 end
 
 target 'altran_challengeTests' do
@@ -18,6 +18,6 @@ target 'altran_challengeTests' do
   
   pod 'Quick'
   pod 'Nimble', '~> 7.0'
-  pod 'RxTest'
-  
+#  pod 'RxTest'
+
 end

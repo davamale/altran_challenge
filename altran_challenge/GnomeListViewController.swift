@@ -318,12 +318,12 @@ extension GnomeListViewController: Customizable {
     
     let leadingFC = filterControl.leadingAnchor.constraint(equalTo: view.leadingAnchor,
                                                            constant: PrivateConstants.FilterControl.leading)
-    leadingFC.priority = 750
+    leadingFC.priority = UILayoutPriority(rawValue: 750)
     leadingFC.isActive = true
     
     let trailingFC = filterControl.trailingAnchor.constraint(equalTo: view.trailingAnchor,
                                                              constant: PrivateConstants.FilterControl.trailing)
-    trailingFC.priority = 750
+    trailingFC.priority = UILayoutPriority(rawValue: 750)
     trailingFC.isActive = true
     
     // table view
